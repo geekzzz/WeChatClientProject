@@ -42,7 +42,9 @@ Page({
         }
       })
     }
+    
   },
+
   onReady:function(){
     // 页面渲染完成
     console.log('页面渲染完成')
@@ -64,5 +66,9 @@ Page({
       userInfo: e.detail.userInfo,
       hasUserInfo: true
     })
+  },
+  click:function(){
+    console.log("点击了文字");
+    console.log(this.data.userInfo.nickName);
   },
 })

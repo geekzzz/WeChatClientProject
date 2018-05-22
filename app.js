@@ -29,6 +29,12 @@ App({
               }
             }
           })
+          wx.getLocation({
+            success: function (res) {
+              console.log('经度' + res.latitude)
+              console.log('纬度' + res.longitude)
+            },
+          });
         }
       }
     })
