@@ -67,8 +67,13 @@ Page({
       hasUserInfo: true
     })
   },
-  click:function(){
+  Click:function(){
     console.log("点击了文字");
     console.log(this.data.userInfo.nickName);
+  },
+  JumpToEntryPage:function(){
+    wx.navigateTo({
+      url: '../entry/entry'
+    })
   },
 })

@@ -11,7 +11,10 @@
     <text class="user-motto">{{motto}}</text>
   </view>
   <view>
-    <text catchtap="click" class="window">Hello</text>
+    <text catchtap="Click" class="window">打印用户名称</text>
+  </view>
+  <view>
+    <text catchtap="JumpToEntryPage" class="window">跳转到entry页面</text>
   </view>
 </view>
 
