@@ -4,9 +4,13 @@
 	"miniprogramRoot": "./client",
 	"qcloudRoot": "./server",
 	"setting": {
+		"urlCheck": false,
+		"es6": true,
+		"postcss": true,
+		"minified": true,
 		"newFeature": true
 	},
 	"appid": "wx069974bdb2d6d13d",
-	"projectname": "wechatproject",
+	"projectname": "%E9%A1%B9%E7%9B%AE",
 	"condition": {}
 }

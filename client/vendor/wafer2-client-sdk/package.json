@@ -37,7 +37,7 @@
   },
   "homepage": "https://github.com/tencentyun/wafer2-client-sdk#readme",
   "license": "MIT",
-  "main": "login.js",
+  "main": "index.js",
   "name": "wafer2-client-sdk",
   "repository": {
     "type": "git",

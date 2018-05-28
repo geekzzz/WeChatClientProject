@@ -37,3 +37,11 @@
         </navigator>
     </view>
 </view>
+
+<!-- 显示其所在位置 -->
+<view class='location'>
+<button bindtap='getLocation'>显示位置</button>
+</view >
+
+<text>经纬度:</text>  <view>{{lati}}</view> <view>{{longti}}</view>
+<text>具体位置:</text>  <view>{{location}}</view>

@@ -1,7 +1,5 @@
-module.exports = ctx => 
-{
-  ctx.state.data =
- {
-   msg: 'hello,world'
- }
+module.exports = ctx => {
+  ctx.state.data = {
+    msg: 'Hello World'
+  }
 }

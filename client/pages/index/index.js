@@ -2,10 +2,17 @@
 var qcloud = require('../../vendor/wafer2-client-sdk/index')
 var config = require('../../config')
 var util = require('../../utils/util.js')
-
+var QQMapWX = require('../../utils/qqmap-wx-jssdk.js')
+var qqmapsdk = new QQMapWX({
+  key: 'PO3BZ-IMCCO-S5PWK-SSNVS-PZDFQ-WYBLQ'
+});
 Page({
     data: {
         userInfo: {},
+        lati: '',
+        longti:'',
+        location:'',
+        
         logged: false,
         takeSession: false,
         requestResult: ''
@@ -174,21 +181,39 @@ Page({
             success: function(res){
                 util.showBusy('正在上传')
                 var filePath = res.tempFilePaths[0]
+//console.log(filePath);
+
+              wx.getImageInfo({
+                src: res.tempFilePaths[0],
+                success: function (res) {
+                  console.log(res.width)
+                  console.log(res.height)
+                }
+              })
+
 
                 // 上传图片
                 wx.uploadFile({
                     url: config.service.uploadUrl,
+                    
                     filePath: filePath,
+                    
                     name: 'file',
 
                     success: function(res){
                         util.showSuccess('上传图片成功')
-                        console.log(res)
+                        console.log(config.service.uploadUrl);
+
+//console.log(res.data)
+//var data=res.data.substring(1);
                         res = JSON.parse(res.data)
-                        console.log(res)
+                        
+                        //console.log(res)
                         that.setData({
-                            imgUrl: res.data.imgUrl
+                          imgUrl: res.data.imgUrl
+                            
                         })
+                        //console.log(jsonData.savepath + "" + jsonData.savename)
                     },
 
                     fail: function(e) {
@@ -214,7 +239,6 @@ Page({
     // 切换信道的按钮
     switchChange: function (e) {
         var checked = e.detail.value
-
         if (checked) {
             this.openTunnel()
         } else {
@@ -290,5 +314,54 @@ Page({
         }
         util.showBusy('信道连接中...')
         this.setData({ tunnelStatus: 'closed' })
-    }
+    },
+
+  getLocation: function(e){
+    var that=this;
+
+   
+
+  wx.getLocation({
+    
+  success: function(res) {
+    that.setData({
+      lati: res.latitude,
+      longti: res.longitude
+    }),
+    qqmapsdk.reverseGeocoder({
+      location: {
+        latitude: res.latitude,
+        longitude: res.longitude
+      },
+      success: function (addressRes) {
+        console.log(addressRes);
+        console.log(addressRes.result.formatted_addresses.recommend);
+        console.log('successfully');
+
+        
+      that.setData({
+          lati:res.latitude, 
+          longti:res.longitude,
+          location:addressRes.result.address
+      })
+
+
+      },
+      fail: function (addRes) {
+        console.log('failure');
+        console.log(addRes);
+      }
+    })
+  },
+  fail:function(){
+    that.setData({
+      lati:1,
+      longti:1 
+    })
+  }
+
+
+})
+}
+
 })
