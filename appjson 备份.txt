@@ -19,10 +19,7 @@
     "pages/message/list/index",
     "pages/message/chatroom/index",
     "pages/pay/pay",
-    "pages/test/index",
-    "pages/weather/weather",
-    "pages/note/note",
-    "pages/collect/collect"
+    "pages/test/index"
   ],
   "window": {
     "backgroundTextStyle": "light",
@@ -38,21 +35,27 @@
     "list": [
       {
         "pagePath": "pages/interface/interface",
-        "iconPath": "image/tabbar1.png",
-        "selectedIconPath": "image/tabbar1fill.png",
-        "text": "晴雨表"
+        "iconPath": "image/icon_API.png",
+        "selectedIconPath": "image/icon_API_HL.png",
+        "text": "常用接口"
       },
       {
         "pagePath": "pages/index/index",
-        "iconPath": "image/tabbar2.png",
-        "selectedIconPath": "image/tabbar2fill.png",
-        "text": "收藏夹"
+        "iconPath": "image/list.png",
+        "selectedIconPath": "image/list1.png",
+        "text": "日记管理"
       },
       {
         "pagePath": "pages/interface/article/index",
-        "iconPath": "image/tabbar3.png",
-        "selectedIconPath": "image/tabbar3fill.png",
-        "text": "笔记本"
+        "iconPath": "image/icon_component.png",
+        "selectedIconPath": "image/icon_component_HL.png",
+        "text": "活动专题"
+      },
+      {
+        "pagePath": "pages/account/account",
+        "iconPath": "image/wechat.png",
+        "selectedIconPath": "image/wechatHL.png",
+        "text": "我"
       }
     ]
   }

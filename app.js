@@ -14,6 +14,7 @@ Bmob.initialize(
 App({
   onLaunch: function () {
     var user = new Bmob.User() //开始注册用户
+    console.log('yonghudenglu')
     user.auth().then(function (obj) {
       console.log('登陆成功')
     },
