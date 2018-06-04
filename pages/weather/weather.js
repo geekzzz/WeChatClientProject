@@ -5,6 +5,10 @@ Page({
    * 页面的初始数据
    */
   data: {
+    MainSrc:"/image/qietu/tianqibeijin",
+  Info:[{Location:"广州",Name:"我",Temperature:"35°C",Weather:"晴",OtherInfo:"AQI 15 空气质量 优",Date:"2018.7.28 Sunday",Warning:"20号西瓜台风将登陆广州",Cloth:"冷",Rays:"最强",Cold:"极易发",Sports:"不适宜"}],
+  WeatherIcon:["iconsnow.png","iconrain.png",""],
+  WeatherCard: ["snow.png", "rain.png","cloud.png", "frog.png", "hot.png",   "sunny.png", "wind.png"]
   
   },
 

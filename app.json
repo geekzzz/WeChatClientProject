@@ -1,5 +1,7 @@
 {
   "pages": [
+        "pages/weather/weather",
+    "pages/collect/collect",
     "pages/index/index",
     "pages/interface/chatroom/chatroom",
     "pages/interface/article/detail/index",
@@ -20,9 +22,8 @@
     "pages/message/chatroom/index",
     "pages/pay/pay",
     "pages/test/index",
-    "pages/weather/weather",
-    "pages/note/note",
-    "pages/collect/collect"
+
+    "pages/note/note"
   ],
   "window": {
     "backgroundTextStyle": "light",
@@ -37,13 +38,13 @@
     "backgroundColor": "#ffffff",
     "list": [
       {
-        "pagePath": "pages/interface/interface",
+        "pagePath": "pages/weather/weather",
         "iconPath": "image/tabbar1.png",
         "selectedIconPath": "image/tabbar1fill.png",
         "text": "晴雨表"
       },
       {
-        "pagePath": "pages/index/index",
+        "pagePath": "pages/collect/collect",
         "iconPath": "image/tabbar2.png",
         "selectedIconPath": "image/tabbar2fill.png",
         "text": "收藏夹"

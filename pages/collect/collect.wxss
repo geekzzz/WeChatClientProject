@@ -1,1 +1,81 @@
 /* pages/collect/collect.wxss */
+page{
+  height: 100%;
+}
+.collectPage{
+ 
+  background-color: white;
+
+  display: flex;
+  flex-direction: column;
+
+   align-items: center
+}
+.collectCard{
+  position: relative;
+  background-size: 100% 100%;
+  top: 50rpx;
+  margin: 12rpx;
+  display:flex;
+  flex-direction: column;
+  width:716rpx;
+  height: 268rpx;
+justify-content:  flex-start;
+align-items:  flex-start;
+
+}
+
+.block1{
+  position:  absolute;
+  top: 30rpx;
+  left: 40rpx;
+  color: #5f708c;
+  font-size: 37.5rpx;
+
+}
+
+
+.block2{
+  color: #8497b6;
+  position:  absolute;
+  top: 85rpx;
+  left: 40rpx;
+  font-size: 29.2rpx;
+}
+
+.block3{
+  color: #000000;
+  position:  absolute;
+  width:100%;
+  height: 63rpx;
+  top: 150rpx;
+  left: 40rpx;
+  font-size: 29.2rpx;
+  align-items: center;
+  align-content: center;
+  justify-content:  center;
+}
+.date{
+position:  absolute;
+bottom: 5rpx;
+left: 100rpx;
+}
+.check{
+  color: #7db0e1;
+  font-size: 29.2rpx;
+  size: 151rpx 53rpx;
+border-radius: 50rpx;
+border: 3rpx solid #7db0e1;
+position: absolute;
+top:135rpx;
+left: 570rpx;
+
+
+ 
+  
+
+}
+
+.time{
+ margin: 70rpx;
+}

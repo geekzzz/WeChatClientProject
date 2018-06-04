@@ -1,1 +1,73 @@
 /* pages/weather/weather.wxss */
+
+
+.WeatherPage{
+
+}
+
+.WeatherCard{
+  position: relative;
+  top:80rpx;
+  color: white;
+  width: 100%;
+  height: 464rpx;
+  background-size: 100% 100%;
+ 
+}
+
+.Block1{
+  position: absolute;
+  left: 80rpx;
+  top:60rpx;
+}
+.Location{
+  font-size: 42rpx;
+  align-items: flex-end
+}
+.Name{
+  margin: 31.5rpx;
+  font-size: 30rpx;
+   align-items: flex-end
+}
+
+.Block2{
+  position: absolute;
+  left: 80rpx;
+  top:140rpx;
+}
+
+.Temperature{
+font-size: 45rpx;
+ align-items: flex-end;
+
+
+}
+
+.Weather{
+
+font-size: 37.5rpx;
+ align-items: flex-end;
+ margin: 25rpx;
+
+}
+
+.Block3{
+  position: absolute;
+  left: 80rpx;
+  top: 220rpx;
+  font-size: 25rpx;
+  justify-content: space-between
+}
+.Block4{
+  position: absolute;
+  left: 80rpx;
+  top: 280rpx;
+  font-size: 21rpx;
+  justify-content: space-between
+}
+.Block5{
+  position: absolute;
+  left: 80rpx;
+  top:330rpx;
+  font-size: 25rpx;
+}

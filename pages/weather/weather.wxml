@@ -1,2 +1,22 @@
 <!--pages/weather/weather.wxml-->
-<text>pages/weather/weather.wxml</text>
+<view class="WeatherPage">
+
+<view class="WeatherCard" style="background-image:url('{{MainSrc}}/{{WeatherCard[0]}}')">
+<view class="Block1">
+<text class="Location">{{Info[0].Location}}</text>
+<text class="Name">{{Info[0].Name}}</text>
+</view>
+
+<view class="Block2">
+<text class="Temperature">{{Info[0].Temperature}}</text>
+<text class="Weather">{{Info[0].Weather}}</text>
+</view>
+<view class="Block3">{{Info[0].OtherInfo}}</view>
+<view class="Block4">{{Info[0].Date}}</view>
+<view class="Block5">{{Info[0].Warning}}</view>
+<view class="WeatherIcon"><image src="{{MainSrc}}/"></image></view>
+</view>
+
+
+
+</view>

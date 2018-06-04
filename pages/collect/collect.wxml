@@ -1,2 +1,19 @@
 <!--pages/collect/collect.wxml-->
-<text>pages/collect/collect.wxml</text>
+<view class="collectPage">
+
+<view wx:for="{{Info}}" wx:for-index="idx" wx:for-item="item">
+<view class="collectCard" style="background-image:url('{{BgSrc}}')">
+<view class="block1"><text>{{item.text}}</text></view>
+<view class="block2"><text>From {{item.name}}</text></view>
+<view class="block3">
+<image style='width:63rpx;height:63rpx' src='{{IconSrc[idx]}}'></image>
+<text class='date'>— — {{item.date}}</text>
+</view>
+<button class=".check" >查看</button>
+</view>
+
+</view>
+
+
+<view class="time"><image src='{{TimeSrc}}' style='width:499rpx;height:77rpx'></image></view>
+</view>
