@@ -25,12 +25,13 @@
 
     "pages/note/note"
   ],
-  "window": {
-    "backgroundTextStyle": "light",
-    "navigationBarBackgroundColor": "#3891f8",
-    "navigationBarTitleText": "增删改查-小程序Demo",
-    "navigationBarTextStyle": "#fff"
-  },
+"window": {
+  "backgroundColor": "#F6F6F6",
+  "backgroundTextStyle": "dark",
+  "navigationBarBackgroundColor": "#F6F6F6",
+  "navigationBarTitleText": "与你同晴",
+  "navigationBarTextStyle": "black"
+},
   "tabBar": {
     "color": "#7A7E83",
     "selectedColor": "#318efb",
