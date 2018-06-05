@@ -1,11 +1,11 @@
-<!--pages/note/note.wxml-->
-<text>pages/note/note.wxml</text>
+
+<!-- <text>pages/note/note.wxml</text>
 <import src="../../style/footer.wxml"  />
 <view class="page">
   <scroll-view lower-threshold="800" bindscrolltolower="pullUpLoad" upper-threshold="0" scroll-y="true" style="height: {{windowHeight}}px;  ">
     <view class="page__bd">
 
-      <!--<button type="primary" bindtap="toAddDiary" hover-class="other-button-hover"> 增加日记 </button>-->
+      <button type="primary" bindtap="toAddDiary" hover-class="other-button-hover"> 增加日记 </button>
       <view class="weui-panel">
 
         <view class="weui-panel__hd">用户列表</view>
@@ -39,4 +39,20 @@
       </view>
     </view>
   </scroll-view>
+</view>  -->
+
+
+
+<view class="page">
+<view wx:for="{{location}}" wx:item="item" wx:index="idx">
+    <view class="location">{{item}}</view>
+    <view wx:for="{{location}}" wx:item="it" wx:index="id">
+        <view class="member">
+
+        </view>
+    </view>
+</view>
+
+<view class="location">{{}}</view>
+
 </view>

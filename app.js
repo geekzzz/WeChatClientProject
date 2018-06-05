@@ -11,6 +11,7 @@ Bmob.initialize(
 )
 // Bmob.initialize("983bc08c5a6d2e9bafa83b2c550a8175", "1a388a666e3bf56dedbcdd9d54a60e11");
 
+
 App({
   onLaunch: function () {
     var user = new Bmob.User() //开始注册用户
@@ -40,6 +41,7 @@ App({
       })
     }
   },
+
   globalData: {
     userInfo: null
   }

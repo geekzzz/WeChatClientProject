@@ -1,1 +1,27 @@
 /* pages/note/note.wxss */
+
+
+.location{
+  font-size: 33.3rpx;
+  color:#3f577d;
+}
+.member{
+  display: flex;
+  position: relative;
+  width: 694rpx;
+  height: 148rpx;
+}
+.portrait{
+position: absolute;
+top: 0;
+left: 0;
+}
+.relation{
+color:#5f708c;
+font-size: 37.5rpx;
+}
+
+.score{
+  color:#5f708c;
+  font-size: 29rpx;
+}
