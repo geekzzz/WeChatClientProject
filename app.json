@@ -40,20 +40,20 @@
     "list": [
       {
         "pagePath": "pages/weather/weather",
-        "iconPath": "image/tabbar1.png",
-        "selectedIconPath": "image/tabbar1fill.png",
+        "iconPath": "image/1.png",
+        "selectedIconPath": "image/1.2.png",
         "text": "晴雨表"
       },
       {
         "pagePath": "pages/collect/collect",
-        "iconPath": "image/tabbar2.png",
-        "selectedIconPath": "image/tabbar2fill.png",
+        "iconPath": "image/2.png",
+        "selectedIconPath": "image/2.2.png",
         "text": "收藏夹"
       },
       {
         "pagePath": "pages/interface/article/index",
-        "iconPath": "image/tabbar3.png",
-        "selectedIconPath": "image/tabbar3fill.png",
+        "iconPath": "image/3.png",
+        "selectedIconPath": "image/3.2.png",
         "text": "笔记本"
       }
     ]
