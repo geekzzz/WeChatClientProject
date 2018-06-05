@@ -1,72 +1,95 @@
 // pages/note/note.js
+//index.js
+//获取应用实例
+var Bmob = require('../../utils/bmob.js');
+var common = require('../../utils/common.js');
+var app = getApp();
+var that;
 Page({
 
-  /**
-   * 页面的初始数据
-   */
   data: {
-    loading: true
+    writeDiary: false,
+    loading: false,
+    windowHeight: 0,
+    windowWidth: 0,
+    limit: 10,
+    diaryList: [],
+    modifyDiarys: false
   },
+  onReady: function (e) {
 
-  /**
-   * 生命周期函数--监听页面加载
-   */
-  onLoad: function (options) {
-    that = this
   },
+  onLoad: function () {
+    that = this;
 
-  /**
-   * 生命周期函数--监听页面初次渲染完成
-   */
-  onReady: function () {
-  
+    // wx.showShareMenu({
+    //   withShareTicket: true //要求小程序返回分享目标信息
+    // })
+
+    // var k = 'http://bmob-cdn-12917.b0.upaiyun.com/2017/07/18/d99d3bb7400cb1ed808f34896bff6fcc.jpg';
+
+    // var newUrl = k.replace("http://bmob-cdn-12917.b0.upaiyun.com", "https://bmob-cdn-12917.bmobcloud.com")
+
+    // console.log(newUrl);
+
   },
-
-  /**
-   * 生命周期函数--监听页面显示
-   */
+  noneWindows: function () {
+    that.setData({
+      writeDiary: "",
+      modifyDiarys: ""
+    })
+  },
   onShow: function () {
-  
-  },
 
-  /**
-   * 生命周期函数--监听页面隐藏
-   */
-  onHide: function () {
-  
-  },
+    getNote(this);
 
-  /**
-   * 生命周期函数--监听页面卸载
-   */
-  onUnload: function () {
-  
-  },
 
-  /**
-   * 页面相关事件处理函数--监听用户下拉动作
-   */
-  onPullDownRefresh: function () {
-  
+    wx.getSystemInfo({
+      success: (res) => {
+        that.setData({
+          windowHeight: res.windowHeight,
+          windowWidth: res.windowWidth
+        })
+      }
+    })
   },
+})
 
-  /**
-   * 页面上拉触底事件的处理函数
-   */
-  onReachBottom: function () {
-  
-  },
 
-  /**
-   * 用户点击右上角分享
-   */
-  onShareAppMessage: function () {
-  
-  },
+/*
+* 获取数据
+*/
 
-  getNote: function()
-  {
-    
+function getNote(t, k) {
+  that = t;
+  var Note = Bmob.Object.extend("note");
+  var query = new Bmob.Query(Note);
+  var query1 = new Bmob.Query(Note);
+
+  //会员模糊查询
+  if (k) {
+    query.equalTo("title", { "$regex": "" + k + ".*" });
+    query1.equalTo("content", { "$regex": "" + k + ".*" });
   }
 
-})
+  //普通会员匹配查询
+  // query.equalTo("title", k);
+
+  query.descending('createdAt');
+  // 查询所有数据
+  query.limit(that.data.limit);
+
+  var mainQuery = Bmob.Query.or(query, query1);
+  mainQuery.find({
+    success: function (results) {
+      // 循环处理查询到的数据
+      console.log(results);
+      that.setData({
+        noteList: results
+      })
+    },
+    error: function (error) {
+      console.log("查询失败: " + error.code + " " + error.message);
+    }
+  });
+}

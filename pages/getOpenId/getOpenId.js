@@ -49,5 +49,63 @@ Page({
         }
       }
     });
+
+
+    //存储
+    // var Diary = Bmob.Object.extend("families");
+    // var query = new Diary();
+    // query.set("relation","bababab");
+    // query.set("name","131");
+    // query.save(null, {
+    //   success: function (result) {
+    //     console.log(result);
+    //   },
+    //   error: function (result, error) {
+    //     // 添加失败
+    //     console.log('error save');
+    //   }
+    // });
+
+
+    //查询
+    // var Diary = Bmob.Object.extend("families");
+    // var query = new Bmob.Query(Diary);
+    // query.equalTo("relation","爸爸");
+    // query.find({
+    //   success: function (results) {
+    //     console.log(results)
+    //   },
+    //   error: function (error) {
+    //     console.log("查询失败: " + error.code + " " + error.message);
+    //   }
+    // });
+
+    //修改
+    // var Diary = Bmob.Object.extend("families");
+    // var query = new Bmob.Query(Diary);
+
+    var Diary = Bmob.Object.extend("families");
+    var query = new Bmob.Query(Diary);
+    // 这个 id 是要修改条目的 id，你在生成这个存储并成功时可以获取到，请看前面的文档
+    query.get(that.data.nowId, {
+      success: function (result) {
+
+        // 回调中可以取得这个 GameScore 对象的一个实例，然后就可以修改它了
+        result.set('title', modyTitle);
+        result.set('content', modyContent);
+        result.save();
+        common.showTip('日记修改成功', 'success', function () {
+          that.onShow();
+          that.setData({
+            modifyDiarys: false
+          })
+        });
+
+        // The object was retrieved successfully.
+      },
+      error: function (object, error) {
+
+      }
+    });
   }
 })

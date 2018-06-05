@@ -1,18 +1,42 @@
 <!--pages/note/note.wxml-->
 <text>pages/note/note.wxml</text>
 <import src="../../style/footer.wxml"  />
-<view class="container">
-  <template is="head" data="{{title: 'navigator'}}"  />
-  <view class="page-body">
-    <view class="btn-area">
-      <!-- <loading hidden="{{loading}}">获取中...</loading> -->
-      <button type="primary" bindtap="getOpenId">获取Openid</button>
-      <view>
-        <text>返回OpenId：{{url}}</text>
+<view class="page">
+  <scroll-view lower-threshold="800" bindscrolltolower="pullUpLoad" upper-threshold="0" scroll-y="true" style="height: {{windowHeight}}px;  ">
+    <view class="page__bd">
+
+      <!--<button type="primary" bindtap="toAddDiary" hover-class="other-button-hover"> 增加日记 </button>-->
+      <view class="weui-panel">
+
+        <view class="weui-panel__hd">用户列表</view>
+        <view class="weui-panel__bd">
+<block wx:if="{{noteList.length>0}}">
+          <navigator class="weui-media-box weui-media-box_text" wx:for="{{noteList}}" wx:key="noteItem" url="/pages/addMember/addMember?objectId={{item.objectId}}">
+            <view class="weui-media-box__title weui-media-box__title_in-text">
+              {{item.title}}</view>
+            <view class="weui-media-box__desc">{{item.content}}</view>
+            <view class="weui-media-box__info">
+              <view class="weui-media-box__info__meta weui-media-time">时间：{{item.updatedAt}}</view>
+              <view class="weui-media-box__info__meta weui-media-box__info__meta_extra">来源:开发者</view>
+              <view class="weui-media-box__info__meta weui-media-box__info__operate">
+                <icon type="cancel dels" size="16"></icon>
+                <text class="del" catchtap="deleteDiary" data-id="{{item.objectId}}">删除</text>
+                <icon type="success edits" size="16"></icon>
+                <text catchtap="toModifyNote" data-id="{{item.objectId}}" data-province="{{item.province}}" data-city="{{item.city}}" data-district="{{item.district}}">编辑</text>
+              </view>
+            </view>
+          </navigator>
+</block>
+<block wx:else>
+           <view class="weui-media-box weui-media-box_text">
+            <view class="weui-media-box__title weui-media-box__title_in-text">
+             请在主页面添加用户</view>
+            <view class="weui-media-box__desc"></view>
+
+          </view>
+</block>
+        </view>
       </view>
-
-
     </view>
-  </view>
-  <template is="foot"  />
+  </scroll-view>
 </view>

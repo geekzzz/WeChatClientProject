@@ -21,9 +21,13 @@
     "pages/picasa/picasa",
     "pages/message/list/index",
     "pages/message/chatroom/index",
-    "pages/pay/pay",
     "pages/test/index",
+<<<<<<< HEAD
     "pages/note/note"
+=======
+    "pages/note/note",
+    "pages/note/detail/index"
+>>>>>>> 853f66a357398a505f88ac0820a3fa241937e620
   ],
   "window": {
     "backgroundColor": "#F6F6F6",
@@ -51,7 +55,7 @@
         "text": "收藏夹"
       },
       {
-        "pagePath": "pages/interface/article/index",
+        "pagePath": "pages/note/note",
         "iconPath": "image/3.png",
         "selectedIconPath": "image/3.2.png",
         "text": "笔记本"
