@@ -87,8 +87,10 @@ function getNote(t, k) {
   query.descending('createdAt');
   // 查询所有数据
   query.limit(that.data.limit);
-
+  var app = getApp();
+  var openidMy = app.globalData.openid;  
   var mainQuery = Bmob.Query.or(query, query1);
+  mainQuery.equalTo("openid", openidMy);
   mainQuery.find({
     success: function (results) {
       // 循环处理查询到的数据
