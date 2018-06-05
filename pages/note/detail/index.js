@@ -22,12 +22,15 @@ Page({
    */
   onLoad: function (e) {
     console.log(e.objectId);
+    var app = getApp();
+    var openidMy = app.globalData.openid;  
+    console.log(openid) 
     this.data.nowId = e.objectId;
     var objectId = e.objectId;
     var that = this;
     var Note = Bmob.Object.extend("note");
     var query = new Bmob.Query(Note);
-
+    query.equalTo("openid", openidMy);
     query.get(objectId, {
       success: function (result) {
         console.log(result, result.id);

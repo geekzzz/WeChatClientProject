@@ -22,11 +22,9 @@ Page({
    * 生命周期函数--监听页面加载
    */
   onLoad: function (e) {
-    var app = getApp();
-    var getAppInfo = app.globalData.openid;  
-    console.log(getAppInfo)  
+
     // console.log(e.objectId);
-    
+
     // if (typeof (e) != undefined) {
     //   console.log("编辑 onload");
     //   this.data.nowId = e.objectId;
@@ -125,37 +123,41 @@ Page({
     })
   },
   submit: function () {
-      console.log("添加家人成员");
-      console.log(this.data.array[this.data.index]);
-      console.log(this.data.region);
+    console.log("添加家人成员");
+    var app = getApp();
+    var openid = app.globalData.openid;
+    console.log(openid)
+    console.log(this.data.array[this.data.index]);
+    console.log(this.data.region);
 
-      var Diary = Bmob.Object.extend("note");
-      var query = new Diary();
-      query.set("name", this.data.array[this.data.index]);
-      query.set("province", this.data.region[0]);
-      query.set("city", this.data.region[1]);
-      query.set("district", this.data.region[2]);
-      //query.set("openid",)
-      query.save(null, {
-        success: function (result) {
-          console.log(result);
-        },
-        error: function (result, error) {
-          // 添加失败
-          console.log('error save');
-        }
-      });
+    var Diary = Bmob.Object.extend("note");
+    var query = new Diary();
+    query.set("name", this.data.array[this.data.index]);
+    query.set("province", this.data.region[0]);
+    query.set("city", this.data.region[1]);
+    query.set("district", this.data.region[2]);
+    query.set("openid", openid);
+    //query.set("openid",)
+    query.save(null, {
+      success: function (result) {
+        console.log(result);
+      },
+      error: function (result, error) {
+        // 添加失败
+        console.log('error save');
+      }
+    });
     wx.navigateBack({
-          delta: 1
-        });
-      wx.navigateTo({
-        url: '../collect/collect',
-        success: (result) => {
-          console.log("111");
-        },
-        fail: (result) => {
-          console.log(result);
-        },
-      })
-    }
-  })
+      delta: 1
+    });
+    wx.navigateTo({
+      url: '../collect/collect',
+      success: (result) => {
+        console.log("111");
+      },
+      fail: (result) => {
+        console.log(result);
+      },
+    })
+  }
+})
