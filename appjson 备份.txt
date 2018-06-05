@@ -1,5 +1,6 @@
 {
   "pages": [
+    "pages/addMember/addMember"
     "pages/index/index",
     "pages/interface/chatroom/chatroom",
     "pages/interface/article/detail/index",

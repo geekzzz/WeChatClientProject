@@ -2,11 +2,11 @@
 <view class="collectPage">
 
 <view wx:for="{{Info}}" wx:for-index="idx" wx:for-item="item">
-<view class="collectCard" style="background-image:url('{{BgSrc}}')">
+<view class="collectCard" style="background-image:url('{{MainSrc}}{{BgSrc}}')">
 <view class="block1"><text>{{item.text}}</text></view>
 <view class="block2"><text>From {{item.name}}</text></view>
 <view class="block3">
-<image style='width:63rpx;height:63rpx' src='{{IconSrc[idx]}}'></image>
+<image style='width:63rpx;height:63rpx' src='{{MainSrc}}{{IconSrc[idx]}}'></image>
 <text class='date'>— — {{item.date}}</text>
 </view>
 <button class=".check" >查看</button>
@@ -15,5 +15,5 @@
 </view>
 
 
-<view class="time"><image src='{{TimeSrc}}' style='width:499rpx;height:77rpx'></image></view>
+<view class="time"><image src='{{MainSrc}}{{TimeSrc}}' style='width:499rpx;height:77rpx'></image></view>
 </view>
