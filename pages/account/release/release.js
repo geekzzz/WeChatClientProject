@@ -18,8 +18,6 @@ Page({
   onLoad: function () {
 
     that = this
-
-
   },
   noneWindows: function () {
     that.setData({

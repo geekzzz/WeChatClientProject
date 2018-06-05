@@ -22,12 +22,8 @@
     "pages/message/list/index",
     "pages/message/chatroom/index",
     "pages/test/index",
-<<<<<<< HEAD
-    "pages/note/note"
-=======
     "pages/note/note",
     "pages/note/detail/index"
->>>>>>> 853f66a357398a505f88ac0820a3fa241937e620
   ],
   "window": {
     "backgroundColor": "#F6F6F6",
