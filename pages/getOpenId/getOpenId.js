@@ -49,5 +49,35 @@ Page({
         }
       }
     });
+
+
+    //存储
+    // var Diary = Bmob.Object.extend("families");
+    // var query = new Diary();
+    // query.set("relation","bababab");
+    // query.set("name","131");
+    // query.save(null, {
+    //   success: function (result) {
+    //     console.log(result);
+    //   },
+    //   error: function (result, error) {
+    //     // 添加失败
+    //     console.log('error save');
+    //   }
+    // });
+
+
+    //查询
+    // var Diary = Bmob.Object.extend("families");
+    // var query = new Bmob.Query(Diary);
+    // query.equalTo("relation","爸爸");
+    // query.find({
+    //   success: function (results) {
+    //     console.log(results)
+    //   },
+    //   error: function (error) {
+    //     console.log("查询失败: " + error.code + " " + error.message);
+    //   }
+    // });
   }
 })
