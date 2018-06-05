@@ -1,6 +1,6 @@
 {
   "pages": [
-        "pages/weather/weather",
+    "pages/weather/weather",
     "pages/collect/collect",
     "pages/index/index",
     "pages/interface/chatroom/chatroom",
@@ -20,7 +20,6 @@
     "pages/picasa/picasa",
     "pages/message/list/index",
     "pages/message/chatroom/index",
-    "pages/pay/pay",
     "pages/test/index",
 
     "pages/note/note"
