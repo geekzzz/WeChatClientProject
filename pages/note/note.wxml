@@ -11,7 +11,7 @@
         <view class="weui-panel__hd">用户列表</view>
         <view class="weui-panel__bd">
 <block wx:if="{{noteList.length>0}}">
-          <navigator class="weui-media-box weui-media-box_text" wx:for="{{noteList}}" wx:key="noteItem" url="/pages/addMember/addMember?objectId={{item.objectId}}">
+          <navigator class="weui-media-box weui-media-box_text" wx:for="{{noteList}}" wx:key="noteItem" url="/pages/note/detail/index?objectId={{item.objectId}}">
             <view class="weui-media-box__title weui-media-box__title_in-text">
               {{item.title}}</view>
             <view class="weui-media-box__desc">{{item.content}}</view>

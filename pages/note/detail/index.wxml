@@ -1,2 +1,18 @@
-<!--pages/note/detail/index.wxml-->
-<text>pages/note/detail/index.wxml</text>
+<!-- pages/note/detail/index.wxml -->
+<view class="addMemberPage">
+  <view class="pic" style="background-image:url('{{MainSrc}}/风雨同舟.png')"></view>
+  <view class="question">TA的位置</view>
+  <view class="answer" style="background-image:url('{{MainSrc}}/line.png')">
+    <picker mode="region" value="{{region}}" bindchange="bindRegionChange">
+      <view class="picker">{{region[0]}} {{region[1]}} {{region[2]}}</view>
+    </picker>
+  </view>
+  <view class="question">谁在那座城市</view>
+  <view class="answer" style="background-image:url('{{MainSrc}}/line.png')">
+    <view class="picker">{{array[index]}}</view>
+  </view>
+  <view class="bottom">
+    <view class="cancel" bindtap="cancel">取消</view>
+    <view class="submit" bindtap="submit">提交</view>
+  </view>
+</view>

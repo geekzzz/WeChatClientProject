@@ -1,1 +1,50 @@
 /* pages/note/detail/index.wxss */
+.addMemberPage{
+    display: flex;
+    height: 100%;
+    flex-direction: column;
+    font-size: 33.3rpx;
+    background-color:white;
+  }
+  .pic{
+    width: 252rpx;
+    height: 165rpx;
+    background-size: 100% 100%;
+    margin-top: 51rpx;
+    align-self: center;
+  }
+  .question{
+     width:545rpx;
+    height: 60rpx;
+    color: #8497b6;
+    align-self: center;
+    margin-top: 120rpx;
+  }
+  .answer{
+    position: relative;
+    width:545rpx;
+    height: 85rpx;
+    background-size:100% 100%;
+    align-self: center;
+  }
+  
+  .picker{
+  color:#9b9b9b;
+  position: absolute;
+  bottom: 12rpx;
+  }
+  
+  
+  .bottom{
+    display: flex;
+  
+    width: 100%;
+    height: 70rpx;
+    position: fixed;
+    bottom: 0rpx;
+    justify-content: space-around;
+  }
+  .cancel{
+  
+  
+  }
