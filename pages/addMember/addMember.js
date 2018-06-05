@@ -22,6 +22,9 @@ Page({
    * 生命周期函数--监听页面加载
    */
   onLoad: function (e) {
+    var app = getApp();
+    var getAppInfo = app.globalData.openid;  
+    console.log(getAppInfo)  
     // console.log(e.objectId);
     
     // if (typeof (e) != undefined) {
@@ -132,6 +135,7 @@ Page({
       query.set("province", this.data.region[0]);
       query.set("city", this.data.region[1]);
       query.set("district", this.data.region[2]);
+      //query.set("openid",)
       query.save(null, {
         success: function (result) {
           console.log(result);

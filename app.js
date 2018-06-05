@@ -18,8 +18,33 @@ App({
     user.auth().then(function (obj) {
       console.log('登陆成功')
     },
-    function (err) {
+      function (err) {
         console.log('失败了', err)
+      });
+
+    //获取open id，请在官网填写微信小程序key
+    var that = this
+    wx.login({
+      success: function (res) {
+        if (res.code) {
+          //发起网络请求
+          console.log(res.code)
+
+          Bmob.User.requestOpenId(res.code, {
+            success: function (result) {
+              that.globalData.openid = result.openid;
+              console.log(result)
+            },
+            error: function (error) {
+              // Show the error message somewhere
+              console.log("Error: " + error.code + " " + error.message);
+            }
+          });
+        } else {
+          console.log('获取用户登录态失败！' + res.errMsg)
+          common.showTip('获取用户登录态失败！', 'loading');
+        }
+      }
     });
   },
   getUserInfo: function (cb) {
@@ -40,7 +65,10 @@ App({
       })
     }
   },
+
   globalData: {
-    userInfo: null
+    userInfo: null,
+    openid: 0,
   }
 })
+
