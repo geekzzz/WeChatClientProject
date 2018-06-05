@@ -5,8 +5,17 @@ Page({
    * 页面的初始数据
    */
   data: {
-  
+    Info: [{ text: "天气渐冷，记得多加衣物", name: "宝贝女儿", date: "2017.12.25 Sunday" }, { text: "天气渐冷，记得多加衣物", name: "宝贝女儿", date: "2017.12.25 Sunday" }, { text: "天气渐冷，记得多加衣物", name: "宝贝女儿", date: "2017.12.25 Sunday"}],
+    IconSrc: ["/image/qietu/shoucang/icon1.png", "/image/qietu/shoucang/icon2.png", "/image/qietu/shoucang/icon3.png"],
+    BgSrc: "/image/qietu/shoucang/background.png",
+    TimeSrc: "/image/qietu/shoucang/time.png"
+
+
+
   },
+
+  
+  
 
   /**
    * 生命周期函数--监听页面加载

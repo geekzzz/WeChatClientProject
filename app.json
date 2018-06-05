@@ -1,5 +1,7 @@
 {
   "pages": [
+        "pages/weather/weather",
+    "pages/collect/collect",
     "pages/index/index",
     "pages/interface/chatroom/chatroom",
     "pages/interface/article/detail/index",
@@ -20,16 +22,16 @@
     "pages/message/chatroom/index",
     "pages/pay/pay",
     "pages/test/index",
-    "pages/weather/weather",
-    "pages/note/note",
-    "pages/collect/collect"
+
+    "pages/note/note"
   ],
-  "window": {
-    "backgroundTextStyle": "light",
-    "navigationBarBackgroundColor": "#3891f8",
-    "navigationBarTitleText": "增删改查-小程序Demo",
-    "navigationBarTextStyle": "#fff"
-  },
+"window": {
+  "backgroundColor": "#F6F6F6",
+  "backgroundTextStyle": "dark",
+  "navigationBarBackgroundColor": "#F6F6F6",
+  "navigationBarTitleText": "与你同晴",
+  "navigationBarTextStyle": "black"
+},
   "tabBar": {
     "color": "#7A7E83",
     "selectedColor": "#318efb",
@@ -37,21 +39,21 @@
     "backgroundColor": "#ffffff",
     "list": [
       {
-        "pagePath": "pages/interface/interface",
-        "iconPath": "image/tabbar1.png",
-        "selectedIconPath": "image/tabbar1fill.png",
+        "pagePath": "pages/weather/weather",
+        "iconPath": "image/1.png",
+        "selectedIconPath": "image/1.2.png",
         "text": "晴雨表"
       },
       {
-        "pagePath": "pages/index/index",
-        "iconPath": "image/tabbar2.png",
-        "selectedIconPath": "image/tabbar2fill.png",
+        "pagePath": "pages/collect/collect",
+        "iconPath": "image/2.png",
+        "selectedIconPath": "image/2.2.png",
         "text": "收藏夹"
       },
       {
         "pagePath": "pages/interface/article/index",
-        "iconPath": "image/tabbar3.png",
-        "selectedIconPath": "image/tabbar3fill.png",
+        "iconPath": "image/3.png",
+        "selectedIconPath": "image/3.2.png",
         "text": "笔记本"
       }
     ]
