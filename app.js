@@ -2,7 +2,6 @@
 
 var Bmob = require('utils/bmob.js')
 
-
 // var BmobSocketIo = require('utils/bmobSocketIo.js').BmobSocketIo;
 // const BmobSocketIo = require('utils/tunnel');
 Bmob.initialize(
@@ -70,6 +69,8 @@ App({
   globalData: {
     userInfo: null,
     openid: 0,
+    heWeather:"https://free-api.heweather.com/s6/",
+    key:"366e80dfa0564b88a64d4f9898b427ca"
   }
 })
 

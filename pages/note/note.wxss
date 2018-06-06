@@ -1,27 +1,73 @@
 /* pages/note/note.wxss */
-
-
+page{
+  height: 100%;
+  background-color: white;
+}
+.page{
+ 
+display: flex;
+flex-direction: column;
+align-items: center;
+background-color: white;
+}
+.card{
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+}
 .location{
   font-size: 33.3rpx;
   color:#3f577d;
+  margin-top: 30rpx;
 }
 .member{
   display: flex;
   position: relative;
   width: 694rpx;
   height: 148rpx;
+  background-color: yellow;
+  margin-top:30rpx; 
 }
 .portrait{
 position: absolute;
+width: 115rpx;
+height:115rpx;
+background-size: 100% 100%;
+
 top: 0;
 left: 0;
 }
 .relation{
+  position: absolute;
+ left: 160rpx;
+ top: 10rpx;
 color:#5f708c;
 font-size: 37.5rpx;
+
 }
 
 .score{
+  position: absolute;
+  left: 160rpx;
+  bottom: 26rpx;
   color:#5f708c;
   font-size: 29rpx;
+  
+}
+
+.pencil{
+  position: absolute;
+  width: 70rpx;
+  height: 70rpx;
+  background-size: 100% 100%;
+  right: 20rpx;
+  align-self: center
+}
+
+.AddButton{
+  width: 71rpx;
+  height: 71rpx;
+  background-size: 100% 100%;
+  align-self:  center;
+  margin-top: 34rpx;
 }

@@ -15,11 +15,11 @@ Page({
     limit: 10,
     diaryList: [],
     modifyDiarys: false,
-
+    MainSrc:"https://wximg-1256782551-1256782551.cos.ap-guangzhou.myqcloud.com/qietu/",
     map:{},
     family:[{location:"",members:[{relation:"",score:0}]}],
-    location:["杭州","广州"],
-    members: [[{ relation: "爸爸", score: 80 }, { relation: "妈妈", score: 80 }],[{ relation: "妹妹", score: 80 }]]
+    location: ["杭州", "广州"],
+    members: [[{ relation: "爸爸", score: 80 }, { relation: "妈妈", score: 80 }], [{ relation: "女儿", score: 80 }]]
   },
   onReady: function (e) {
 
@@ -27,7 +27,7 @@ Page({
   onLoad: function () {
     var a=this.data.map;
     a["hangzhou"]=["爸爸","妈妈"];
-    a["guangzhou"]=["妹妹"];
+    a["guangzhou"]=["女儿"];
     that = this;
     console.log("this.data.map");
     console.log(this.data.map);

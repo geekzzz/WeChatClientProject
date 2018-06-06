@@ -1,6 +1,5 @@
 
-<!-- <text>pages/note/note.wxml</text>
-<import src="../../style/footer.wxml"  />
+<!-- <import src="../../style/footer.wxml"  />
 <view class="page">
   <scroll-view lower-threshold="800" bindscrolltolower="pullUpLoad" upper-threshold="0" scroll-y="true" style="height: {{windowHeight}}px;  ">
     <view class="page__bd">
@@ -39,20 +38,26 @@
       </view>
     </view>
   </scroll-view>
-</view>  -->
+</view>   -->
 
 
 
 <view class="page">
-<view wx:for="{{location}}" wx:item="item" wx:index="idx">
-    <view class="location">{{item}}</view>
-    <view wx:for="{{location}}" wx:item="it" wx:index="id">
-        <view class="member">
-
+<view wx:for="{{location}}" wx:for-index="idx" wx:for-item="item">
+ <view class="card">
+      <view class="location">{{item}}</view>
+      <view wx:for="{{members[idx]}}" wx:for-index="id" wx:for-item="it">
+        <view class="member"> 
+           <view class="portrait" style="background-image:url('{{MainSrc}}touxiang/{{it.relation}}.png')">
+           </view>
+           <view class="relation">{{it.relation}}</view>
+           <view class="score">亲密得分：{{it.score}}</view>
+           <view class="pencil" style="background-image:url('{{MainSrc}}touxiang/pencil.png')"></view>
         </view>
-    </view>
+      </view>
+  </view>
 </view>
 
-<view class="location">{{}}</view>
+<view class="AddButton" bindtap='Add' style="background-image:url('https://wximg-1256782551-1256782551.cos.ap-guangzhou.myqcloud.com/qietu/tianqibeijin/addButton.png')"></view>
 
 </view>

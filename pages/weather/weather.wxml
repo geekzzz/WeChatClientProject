@@ -3,10 +3,9 @@
 
   <view wx:for="{{Info}}" wx:for-index="idx" wx:for-item="item">
 
-    <view wx:if="{{idx%2==0}}" class="WeatherCard" style="background-image:url('{{MainSrc}}/{{WeatherCard[idx]}}')">
+    <view wx:if="{{idx%2==0}}" bindtap="navigate" class="WeatherCard" style="background-image:url('{{MainSrc}}/{{WeatherCard[idx]}}')">
       <view class="Block1">
         <text class="Location">{{item.Location}}</text>
-        <text class="Name">{{item.Name}}</text>
       </view>
       <view class="Block2">
         <text class="Temperature">{{item.Temperature}}</text>
@@ -30,10 +29,9 @@
       </view>
     </view>
 
-    <view wx:else class="WeatherCardReverse" style="background-image:url('{{MainSrc}}/{{WeatherCardReverse[idx]}}')">
+    <view wx:else bindtap="navigate" class="WeatherCardReverse" style="background-image:url('{{MainSrc}}/{{WeatherCardReverse[idx]}}')">
           <view class=" Block1Reverse ">
            <view class="Location ">{{item.Location}}</view>
-           <view class="Name ">{{item.Name}}</view>
           </view>
           <view class="Block2Reverse">
              <view class="Temperature ">{{item.Temperature}}</view>
@@ -62,7 +60,7 @@
 
 <view class="AddButton" bindtap='Add' style="background-image:url('{{MainSrc}}/{{AddButton}}')"></view>
 
-<view class="BottomBg" style="background-image:url('{{MainSrc}}/{{BottomBg}}')"></view>
+<view wx:if="{{Info.size()>1}}" class="BottomBg" style="background-image:url('{{MainSrc}}/{{BottomBg}}')"></view>
 
 
 

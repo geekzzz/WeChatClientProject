@@ -1,0 +1,37 @@
+<!--pages/mainWeather/mainWeather.wxml-->
+
+<view class="page">
+ <view class="animation">
+   <view animation="{{animation0}}" class="taiyang3" style="background-image:url('{{MainSrc}}{{animationSrc[2]}}')"></view>
+   <view animation="{{animation1}}" class="taiyang2" style="background-image:url('{{MainSrc}}{{animationSrc[1]}}')"></view>
+   <view animation="{{animation2}}" class="taiyang1" style="background-image:url('{{MainSrc}}{{animationSrc[0]}}')"></view>
+ </view>
+
+  <view class="weather">
+    <view class="block1">{{location}}  {{weather}}</view>
+    <view class="block2">{{temperature}}</view>
+    <view class="block3">明天{{weatherTomorrow}} 后天{{weatherAfterTomorrow}}</view>
+    <view class="block4">{{index}}</view>
+    <view class="block5">
+      <view wx:for="{{forecast}}" wx:for-index="idx" wx:for-item="item">
+       <view class="item">
+         <view>{{item.date}}</view>
+         <view>{{item.weather}}</view>
+         <view>{{item.temperature}}</view>
+       </view>
+      </view>
+    </view>
+  </view>
+
+
+  <view class="message">
+    <view class="yuyin" style="background-image:url('{{MainSrc}}{{yuyinSrc}}')" bindtap='yuyin'></view>
+    
+    <view class="inputView" style="">
+          <input class="input"  placeholder="为ta留言并分享"  placeholder-class="placeholder"     bindinput="listenerMessageInput"/>
+    </view>
+     
+      <view class="tuoyuan" style="background-image:url('{{MainSrc}}{{tuoyuanSrc}}')" bindtap="share">分享</view>
+  </view>
+
+</view>

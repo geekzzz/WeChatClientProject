@@ -1,0 +1,133 @@
+/* pages/mainWeather/mainWeather.wxss */
+page{
+  height: 100%;
+}
+.page{
+display: flex;
+flex-direction: column;
+color: #ff7b2e;
+}
+
+
+.animation{
+  position: relative;
+  display: flex;
+  width: 100%;
+  height: 384rpx;
+  /* background-color:black; */
+  
+}
+
+.taiyang1{
+  position: absolute;
+  background-size: 100% 100%;
+  top: 0rpx;
+  right:0rpx;
+width: 375rpx;
+  height: 322rpx;
+}
+.taiyang2{
+   position: absolute;
+    background-size: 100% 100%;
+  top: 0rpx;
+  right:0rpx;
+width: 403rpx;
+  height: 349rpx;
+}
+.taiyang3{
+   position: absolute;
+    background-size: 100% 100%;
+  top: 0rpx;
+  right:0rpx;
+  width: 436rpx;
+  height: 382rpx;
+}
+.weather{
+  position: relative;
+  width: 600rpx;
+  height: 700rpx;
+  /* background-color:green; */
+  align-self: center;
+}
+.block1{
+  font-size: 48rpx;
+  left: 80rpx;
+  /* background-color: black; */
+}
+.block2{
+  font-size: 100rpx;
+  left: 80rpx;
+  /* background-color: black; */
+  margin-top: 60rpx;
+}
+.block3{
+  font-size: 30rpx;
+  left: 80rpx;
+}
+.block4{
+  font-size: 30rpx;
+  left: 80rpx;
+  /* background-color: black; */
+  margin-top: 50rpx;
+}
+
+.block5{
+  display: flex;
+  font-size: 24rpx;
+  margin-top: 60rpx;
+/* background-color: black; */
+justify-content: space-around;
+align-items: center;
+}
+
+.item{
+  display: flex;
+  font-size: 24rpx;
+  flex-direction: column;
+justify-content: space-around;
+align-items: center;
+}
+
+
+.message{
+  display: flex;
+  width: 690rpx;
+  height: 85rpx;
+  align-self: center;
+  justify-content: space-between;
+ 
+}
+
+.yuyin{
+  width: 85rpx;
+  height: 85rpx;
+  background-size: 100% 100%;
+}
+.tuoyuan{
+  width: 85rpx;
+  height: 85rpx;
+  background-size: 100% 100%;
+  display: flex;
+    align-items: center;
+    justify-content: center;
+    color: white;
+}
+.input{
+    
+}
+.placeholder{
+position: absolute;
+left: 40rpx;
+}
+
+.inputView{
+  position: relative;
+    border:  1rpx solid grey;
+    display: flex;
+    align-items: center;
+
+    width:480rpx;
+    height: 85rpx;
+    border-radius: 40px;
+  
+}
