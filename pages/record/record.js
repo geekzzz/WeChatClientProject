@@ -6,7 +6,7 @@ Page({
    * 页面的初始数据
    */
   data: {
-
+    uploadurl:'',
   },
 
   /**
@@ -14,6 +14,11 @@ Page({
    */
   onLoad: function (options) {
     var that = this;
+    console.log('options.recordurl',options.recordurl)
+    if(typeof(options.recordurl) != undefined)
+    {
+      this.data.src = options.recordurl;
+    }
     this.recorderManager = wx.getRecorderManager();
     this.recorderManager.onError(function () {
       that.tip("录音失败！")
@@ -24,6 +29,36 @@ Page({
       })
       console.log(res.tempFilePath)
       that.tip("录音完成！")
+
+      
+        console.log("停止录音", res.tempFilePath)
+
+        var tmpfile = [res.tempFilePath];
+        var file = new Bmob.File('123.mp3', tmpfile);
+        console.log(file);
+        file.save().then(res => {
+          console.log(res.length);
+          console.log(typeof(res));
+          console.log("flie.saveURL",res["_url"]);
+          var Record = Bmob.Object.extend("record");
+          var record = new Record();
+          record.set("recordurl", res["_url"]);
+          that.setData({
+            uploadurl: res["_url"]
+          })
+          console.log('uploadurl',that.data.uploadurl)
+          record.save(null, {
+          success: function (result) {
+            console.log("shangchaun chenggong", result)
+          },
+          error: function (result) {
+
+          }
+        })
+        })
+        
+
+
     });
 
     this.innerAudioContext = wx.createInnerAudioContext();
@@ -79,7 +114,20 @@ Page({
    * 用户点击右上角分享
    */
   onShareAppMessage: function () {
-
+    var that= this;
+    console.log('filepath',this.data.src)
+    return {
+      title: 'Bmob 聊天室',
+      path: 'pages/record/record?recordurl=' + this.data.uploadurl,
+      success: function (res) {
+        // 转发成功
+        console.log('成功', res)
+      },
+      fail: function (res) {
+        // 转发失败
+        console.log('转发失败')
+      }
+    }
   },
 
   /**
@@ -116,31 +164,6 @@ Page({
    */
   stopRecord: function () {
     this.recorderManager.stop();
-    this.recorderManager.onStop(
-      (res) => {
-        var Record = Bmob.Object.extend("record");
-        var record = new Record();
-        console.log("停止录音", res.tempFilePath)
-
-        var tmpfile = [res.tempFilePath];
-        var file = new Bmob.File('123.mp3', tmpfile);
-        // console.log(file);
-        // record.set("recordurl", file);
-        // record.save(null, {
-        //   success: function (result) {
-        //     console.log("shangchaun chenggong", result)
-        //   },
-        //   error: function (result) {
-
-        //   }
-        // })
-        file.save().then(res => {
-          console.log(res.length);
-          console.log(typeof(res));
-          console.log(res["_url"]);
-        })
-      }
-    )
   },
 
   /**
