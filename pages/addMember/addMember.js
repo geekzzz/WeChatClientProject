@@ -16,6 +16,7 @@ Page({
     rows: {},//从note界面跳转过来时，从数据库拉取的当前人物数据
     isModify: false,
     nowId: 0,
+    
   },
 
   /**

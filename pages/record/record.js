@@ -117,7 +117,7 @@ Page({
     var that= this;
     console.log('filepath',this.data.src)
     return {
-      title: 'Bmob 聊天室',
+      title: '与你同晴',
       path: 'pages/record/record?recordurl=' + this.data.uploadurl,
       success: function (res) {
         // 转发成功
