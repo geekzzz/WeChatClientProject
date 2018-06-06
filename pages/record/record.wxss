@@ -1,0 +1,4 @@
+/* pages/record/record.wxss */
+view{
+    padding: 15px;
+  }

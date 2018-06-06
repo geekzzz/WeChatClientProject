@@ -1,0 +1,7 @@
+<!--pages/share/share.wxml-->
+<text>pages/share/share.wxml</text>
+<view hidden="{{maskHidden}}" class="mask"></view> 
+<view class='canvas-box'>
+    <canvas style="width:750rpx; height:940rpx;" canvas-id="myCanvas"/>
+    <image src='{{imagePath}}'></image>  
+</view>
