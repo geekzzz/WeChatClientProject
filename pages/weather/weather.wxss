@@ -133,8 +133,9 @@ font-size: 37.5rpx;
 
 .WeatherIcon{
   position: absolute;
+
   right: 113rpx;
-  top: 140rpx;
+  top: 110rpx;
 }
 .WeatherIconReverse{
   position: absolute;

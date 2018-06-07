@@ -3,7 +3,7 @@
 
   <view wx:for="{{Info}}" wx:for-index="idx" wx:for-item="item">
 
-    <view wx:if="{{idx%2==0}}" bindtap="navigate" class="WeatherCard" style="background-image:url('{{MainSrc}}/{{WeatherCard[idx]}}')">
+    <view wx:if="{{idx%2==0}}" id="{{idx}}" bindtap="navigate" class="WeatherCard" style="background-image:url('{{MainSrc}}/{{WeatherCard[item.CardId]}}')">
       <view class="Block1">
         <text class="Location">{{item.Location}}</text>
       </view>
@@ -11,7 +11,7 @@
         <text class="Temperature">{{item.Temperature}}</text>
         <text class="Weather">{{item.Weather}}</text>
       </view>
-      <view class="Block3">{{item.OtherInfo}}</view>
+      <view class="Block3"><text decode="{{true}}" space="{{true}}">AQI&nbsp;{{item.OtherInfo.aqi}}&nbsp;PM2.5&nbsp;{{item.OtherInfo.pm25}}</text></view>
       <view class="Block4">{{item.Date}}</view>
       <view wx:if="{{item.hasWarning==true}}" class="Block5">{{item.Warning}}</view>
       <view wx:else class="Block5">
@@ -25,11 +25,11 @@
         </view>
       </view>
       <view class="WeatherIcon">
-        <image style="width:180rpx;height:180rpx" src="{{MainSrc}}/{{WeatherIcon[idx]}}"></image>
+        <image style="width:250rpx;height:250rpx" src="{{MainSrc}}/{{WeatherIcon[idx]}}"></image>
       </view>
     </view>
 
-    <view wx:else bindtap="navigate" class="WeatherCardReverse" style="background-image:url('{{MainSrc}}/{{WeatherCardReverse[idx]}}')">
+    <view wx:else bindtap="navigate" id="{{idx}}" class="WeatherCardReverse" style="background-image:url('{{MainSrc}}/{{WeatherCardReverse[item.CardId]}}')">
           <view class=" Block1Reverse ">
            <view class="Location ">{{item.Location}}</view>
           </view>
@@ -37,7 +37,7 @@
              <view class="Temperature ">{{item.Temperature}}</view>
                 <view class="Weather ">{{item.Weather}}</view>
           </view>
-          <view class="Block3Reverse ">{{item.OtherInfo}}</view>
+          <view class="Block3Reverse "><text decode="{{true}}" space="{{true}}">AQI&nbsp;{{item.OtherInfo.aqi}}&nbsp;PM2.5&nbsp;{{item.OtherInfo.pm25}}</text></view>
           <view class="Block4Reverse ">{{item.Date}}</view>
           <view wx:if="{{item.Warning}}" class="Block5Reverse">{{item.Warning}}</view>
           <view wx:else class="Block5Reverse ">

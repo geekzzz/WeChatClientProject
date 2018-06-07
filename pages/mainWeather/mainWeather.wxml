@@ -11,7 +11,7 @@
     <view class="block1">{{location}}  {{weather}}</view>
     <view class="block2">{{temperature}}</view>
     <view class="block3">明天{{weatherTomorrow}} 后天{{weatherAfterTomorrow}}</view>
-    <view class="block4">{{index}}</view>
+    <view class="block4"><text decode="{{true}}" space="{{true}}">AQI&nbsp;{{index.aqi}}&nbsp;PM2.5&nbsp;{{index.pm25}}</text></view>
     <view class="block5">
       <view wx:for="{{forecast}}" wx:for-index="idx" wx:for-item="item">
        <view class="item">

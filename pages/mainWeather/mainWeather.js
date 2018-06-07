@@ -6,7 +6,7 @@ Page({
    */
   data: {
     Message:"",
-    
+    Info:null,
     MainSrc:"	https://wximg-1256782551-1256782551.cos.ap-guangzhou.myqcloud.com/qietu/分享页面/",
 yuyinSrc:"语音输入.png",
 tuoyuanSrc:"椭圆形.png",
@@ -17,10 +17,12 @@ animation2:'',
 animationSrc: ["太阳1.png", "太阳2.png", "太阳3.png"],
   location:"广州",
   weather:"晴",
+  weatherId:"100",
+  cardId:0,
   temperature:"45°C",
   weatherTomorrow:"晴",
   weatherAfterTomorrow:"多云",
-  index:"AQI/63,PM2.5/41",
+  index: { aqi: "", qlt: "", pm25: "" },
   forecast: [{ date: "6月1日", weather: "晴", temperature: "43°/35°" }, { date: "6月2日", weather: "晴", temperature: "43°/35°" }, { date: "6月3日", weather: "晴", temperature: "43°/35°" }, { date: "6月4日", weather: "晴", temperature: "43°/35°" }, { date: "6月5日", weather: "晴", temperature: "43°/35°"}]
   },
 
@@ -29,7 +31,28 @@ animationSrc: ["太阳1.png", "太阳2.png", "太阳3.png"],
    */
   onLoad: function (options) {
   
-
+this.data.Info=JSON.parse(options.Info);
+console.log(this.data.Info);
+var left=this.data.forecast;
+var right=this.data.Info.forecast;
+console.log(left);
+console.log(right);
+for(var i=1;i<6;i++)
+{
+  var date = new Date(right[i].date);
+  left[i-1].date=date.getMonth()+1+"月"+date.getDate()+"日";
+  left[i-1].weather = right[i].cond_txt_d;
+  left[i-1].temperature = right[i].tmp_max + "°/" + right[i].tmp_min+"°";
+}
+this.setData({
+location:this.data.Info.Location,
+  temperature: this.data.Info.Temperature,
+  weather: this.data.Info.Weather,
+  index: this.data.Info.OtherInfo,
+  forecast: left,
+  weatherId: this.data.Info.WeatherId,
+  cardId:this.data.Info.CardId
+})
 
   },
 
@@ -63,8 +86,8 @@ this.translate();
   },
 translate:function(){
   this.animation0.scale(1.1,1.1).step({}).scale(1,1).step();
-  this.animation1.scale(1.15, 1.15).step({}).scale(1, 1).step();
-  this.animation2.scale(1.2, 1.2).step({}).scale(1, 1).step();
+  this.animation1.scale(1.15, 1.15).step({}).scale(0.9, 0.9).step();
+  this.animation2.scale(1.2, 1.2).step({}).scale(0.8,0.8).step();
 
   this.setData({
     animation0:this.animation0.export(),
