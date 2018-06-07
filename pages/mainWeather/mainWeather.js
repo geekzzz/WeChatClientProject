@@ -15,6 +15,8 @@ animation0:'',
 animation1:'',
 animation2:'',
 animationSrc: ["太阳1.png", "太阳2.png", "太阳3.png"],
+Card: ["snow", "rain", "cloud", "frog", "hot", "sun", "wind"],
+Color:["#a1b3c0","#7ac7db","#7baac7","#b7b7b7","#ff7b2e","#ffba2e","7991bd"],
   location:"广州",
   weather:"晴",
   weatherId:"100",
@@ -40,7 +42,8 @@ console.log(right);
 for(var i=1;i<6;i++)
 {
   var date = new Date(right[i].date);
-  left[i-1].date=date.getMonth()+1+"月"+date.getDate()+"日";
+  var a=["Sunday","Monday","Tuesday","Wednesday","Thursday","Friday","Saturday"];
+  left[i-1].date=date.getMonth()+1+"月"+date.getDate()+"日 ";
   left[i-1].weather = right[i].cond_txt_d;
   left[i-1].temperature = right[i].tmp_max + "°/" + right[i].tmp_min+"°";
 }
@@ -61,19 +64,19 @@ location:this.data.Info.Location,
    */
   onReady: function () {
   this.animation0=wx.createAnimation({
-    duration:1000,
+    duration:2000,
     timingFunction:"ease",
     delay:0,
     transformOrigin:"100% 0 0"
   });
   this.animation1 = wx.createAnimation({
-    duration: 1000,
+    duration: 2000,
     timingFunction: "ease",
     delay: 0,
     transformOrigin: "100% 0 0"
   });
   this.animation2 = wx.createAnimation({
-    duration: 1000,
+    duration: 2000,
     timingFunction: "ease",
     delay: 0,
     transformOrigin: "100% 0 0"
@@ -82,12 +85,12 @@ location:this.data.Info.Location,
   setInterval(function(){
 n=n+1;
 this.translate();
-  }.bind(this),3000)
+  }.bind(this),5000)
   },
 translate:function(){
-  this.animation0.scale(1.1,1.1).step({}).scale(1,1).step();
-  this.animation1.scale(1.15, 1.15).step({}).scale(0.9, 0.9).step();
-  this.animation2.scale(1.2, 1.2).step({}).scale(0.8,0.8).step();
+  this.animation0.scale(0.9,0.9).step({}).scale(1,1).step();
+  this.animation1.scale(0.8, 0.8).step({}).scale(1, 1).step();
+  this.animation2.scale(0.7, 0.7).step({}).scale(1,1).step();
 
   this.setData({
     animation0:this.animation0.export(),
@@ -161,7 +164,6 @@ translate:function(){
   listenerMessageInput:function(e){
     this.data.Message=e.detail.value;
   },
-
 
   yuyin:function(){
     console.log("语音输入");

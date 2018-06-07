@@ -1,5 +1,7 @@
 /* pages/weather/weather.wxss */
-
+page{
+  height:100%;
+}
 
 .WeatherPage{
 display: flex;
@@ -140,7 +142,7 @@ font-size: 37.5rpx;
 .WeatherIconReverse{
   position: absolute;
   left: 113rpx;
-  top: 140rpx;
+  top: 110rpx;
 }
 
 .AddButton{
@@ -148,7 +150,7 @@ font-size: 37.5rpx;
   height: 71rpx;
   background-size: 100% 100%;
   align-self:  center;
-margin-top: 34rpx;
+margin-top: 60rpx;
 }
 
 .BottomBg{

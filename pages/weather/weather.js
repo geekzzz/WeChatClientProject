@@ -7,15 +7,16 @@ Page({
   data: {
     // MainSrc:"/image/qietu/tianqibeijin",
     MainSrc:"https://wximg-1256782551-1256782551.cos.ap-guangzhou.myqcloud.com/qietu/tianqibeijin",
-    Info: [{ Location: "广州",Name:[], Temperature: "35°C", Weather: "晴",WeatherId:"100" ,CardId:5,OtherInfo:{aqi:"",qlt:"",pm25:""}, Date: "2018.7.28--Sunday", Warning: "20号西瓜台风将登陆广州",hasWarning:true, Cloth: "冷", Rays: "最强", Cold: "极易发", Sports: "不适宜",forecast:[] },
-      { Location: "杭州", Name: [], Temperature: "35°C", Weather: "晴转多云", WeatherId: "100", CardId: 5, OtherInfo: { aqi: "", qlt: "", pm25: "" }, Date: "2018.7.28--Sunday", Warning: "", hasWarning: false, Cloth: "冷", Rays: "最强", Cold: "极易发", Sports: "不适宜", forecast: [] }],
+    Info: [{ Location: "广州", Name: [], Temperature: "35°C", Weather: "晴", WeatherId: "100", CardId: 5, OtherInfo: { aqi: "", qlt: "", pm25: "" },Tips:[], Date: "2018.7.28--Sunday", Week: "", Warning: "20号西瓜台风将登陆广州", hasWarning: true, Cloth: "冷", Rays: "最强", Cold: "极易发", Sports: "不适宜", forecast: [] },
+      { Location: "杭州", Name: [], Temperature: "35°C", Weather: "晴转多云", WeatherId: "100", CardId: 5, OtherInfo: { aqi: "", qlt: "", pm25: "" }, Tips: [], Date: "2018.7.28--Sunday", Week: "", Warning: "", hasWarning: false, Cloth: "冷", Rays: "最强", Cold: "极易发", Sports: "不适宜", forecast: [] }, { Location: "牡丹江", Name: [], Temperature: "35°C", Weather: "晴转多云", WeatherId: "100", CardId: 5, OtherInfo: { aqi: "", qlt: "", pm25: "" }, Tips:[],Date: "2018.7.28--Sunday", Week: "", Warning: "", hasWarning: false, Cloth: "冷", Rays: "最强", Cold: "极易发", Sports: "不适宜", forecast: [] }],
     // Info: [{ Location: "广州", Name: "我", Temperature: "35°C", Weather: "晴", OtherInfo: "AQI 15 空气质量 优", Date: "2018.7.28--Sunday", Warning: "20号西瓜台风将登陆广州", hasWarning: true, Cloth: "冷", Rays: "最强", Cold: "极易发", Sports: "不适宜" }],
   WeatherIcon:["test1.png","iconsnow.png","iconrain.png",""],
   WeatherCard: ["snow.png", "rain.png","cloud.png", "frog.png", "hot.png",  "sunny.png", "wind.png"],
   WeatherCardReverse: ["snowReverse.png", "rainReverse.png", "cloudReverse.png", "frogReverse.png", "hotReverse.png", "sunnyReverse.png", "windReverse.png"],
   BottomBg:"bottomBg.png",
-  AddButton:"addButton.png"
-  
+  AddButton:"addButton.png",
+  animation0:"",
+  animation1:""
   },
 navigate:function(event){
   console.log(event);
@@ -62,7 +63,7 @@ PullData:function(){
             break;
 
         var tmp = that.data.Info[j];
-        tmp.Temperature = now.tmp + "°C"
+        tmp.Temperature = now.tmp + "°C";
         tmp.Weather = daily_forecast_today.cond_txt_d;
         tmp.WeatherId = daily_forecast_today.cond_code_d;
 //根据天气确定卡片背景
@@ -90,6 +91,9 @@ PullData:function(){
         tmp.Cloth = lifestyle[1].brf;
         tmp.Cold = lifestyle[2].brf;
         tmp.Date = daily_forecast_today.date;
+        var w = new Date(tmp.Date).getDay();
+        var a = ["Sunday", "Monday", "Tuesday", "Wednesday", "Thursday", "Friday", "Saturday"];
+        tmp.Week = a[w];
         tmp.Rays = lifestyle[5].brf;
         tmp.Sports = lifestyle[3].brf;
         tmp.forecast = res.data.HeWeather6[0].daily_forecast;
@@ -218,9 +222,32 @@ that.setData({
    * 生命周期函数--监听页面初次渲染完成
    */
   onReady: function () {
-  
+    this.animation0 = wx.createAnimation({
+      duration: 5000,
+      timingFunction: "linear",
+      delay: 0,
+      transformOrigin: "50% 50% 0"
+    });
+    this.animation1 = wx.createAnimation({
+      duration: 5000,
+      timingFunction: "linear",
+      delay: 0,
+      transformOrigin: "50% 50% 0"
+    });
+    var n = 0;
+    setInterval(function () {
+      n = n + 1;
+      this.translate();
+    }.bind(this), 10000)
   },
-
+  translate: function () {
+    this.animation0.scale(1.1, 1.1).step({}).scale(0.9, 0.9).step();
+    this.animation1.scale(0.9, 0.9).step({}).scale(1.1, 1.1).step();
+    this.setData({
+      animation0: this.animation0.export(),
+      animation1:this.animation1.export(),
+    })
+  },
   /**
    * 生命周期函数--监听页面显示
    */

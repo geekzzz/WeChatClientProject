@@ -12,7 +12,7 @@
         <text class="Weather">{{item.Weather}}</text>
       </view>
       <view class="Block3"><text decode="{{true}}" space="{{true}}">AQI&nbsp;{{item.OtherInfo.aqi}}&nbsp;PM2.5&nbsp;{{item.OtherInfo.pm25}}</text></view>
-      <view class="Block4">{{item.Date}}</view>
+      <view class="Block4"><text decode="{{true}}" space="{{true}}">{{item.Date}}&nbsp;{{item.Week}}</text></view>
       <view wx:if="{{item.hasWarning==true}}" class="Block5">{{item.Warning}}</view>
       <view wx:else class="Block5">
         <view class="ClothAndRays">
@@ -24,8 +24,8 @@
           <text>运动指数：{{item.Sports}}</text>
         </view>
       </view>
-      <view class="WeatherIcon">
-        <image style="width:250rpx;height:250rpx" src="{{MainSrc}}/{{WeatherIcon[idx]}}"></image>
+      <view animation="{{animation0}}" class="WeatherIcon">
+        <image style="width:250rpx;height:250rpx" src="{{MainSrc}}/和风天气/{{item.WeatherId}}.png"></image>
       </view>
     </view>
 
@@ -38,7 +38,7 @@
                 <view class="Weather ">{{item.Weather}}</view>
           </view>
           <view class="Block3Reverse "><text decode="{{true}}" space="{{true}}">AQI&nbsp;{{item.OtherInfo.aqi}}&nbsp;PM2.5&nbsp;{{item.OtherInfo.pm25}}</text></view>
-          <view class="Block4Reverse ">{{item.Date}}</view>
+          <view class="Block4Reverse "><text decode="{{true}}" space="{{true}}">{{item.Date}}&nbsp;{{item.Week}}</text></view>
           <view wx:if="{{item.Warning}}" class="Block5Reverse">{{item.Warning}}</view>
           <view wx:else class="Block5Reverse ">
             <view class="ClothAndRays ">
@@ -49,8 +49,8 @@
                 <text>运动指数：{{item.Sports}}</text>
             </view>
           </view>
-          <view class="WeatherIconReverse ">
-            <image style="width:180rpx;height:180rpx " src="{{MainSrc}}/{{WeatherIcon[idx]}} "></image>
+          <view animation="{{animation1}}" class="WeatherIconReverse ">
+            <image style="width:250rpx;height:250rpx " src="{{MainSrc}}/和风天气/{{item.WeatherId}}.png"></image>
           </view>
     </view>
 
@@ -60,7 +60,7 @@
 
 <view class="AddButton" bindtap='Add' style="background-image:url('{{MainSrc}}/{{AddButton}}')"></view>
 
-<view wx:if="{{Info.size()>1}}" class="BottomBg" style="background-image:url('{{MainSrc}}/{{BottomBg}}')"></view>
+<view wx:if="{{Info.length==1}}" class="BottomBg" style="background-image:url('{{MainSrc}}/{{BottomBg}}')"></view>
 
 
 

@@ -1,10 +1,12 @@
 <!--pages/mainWeather/mainWeather.wxml-->
 
-<view class="page">
+
+<!-- style="color:{{Color[{{cardId}}]}}" -->
+<view class="page" style="color:{{Color[cardId]}}" >
  <view class="animation">
-   <view animation="{{animation0}}" class="taiyang3" style="background-image:url('{{MainSrc}}{{animationSrc[2]}}')"></view>
-   <view animation="{{animation1}}" class="taiyang2" style="background-image:url('{{MainSrc}}{{animationSrc[1]}}')"></view>
-   <view animation="{{animation2}}" class="taiyang1" style="background-image:url('{{MainSrc}}{{animationSrc[0]}}')"></view>
+   <view animation="{{animation0}}" class="taiyang3" style="background-image:url('{{MainSrc}}{{Card[cardId]}}3.png')"></view>
+   <view animation="{{animation1}}" class="taiyang2" style="background-image:url('{{MainSrc}}{{Card[cardId]}}2.png')"></view>
+   <view animation="{{animation2}}" class="taiyang1" style="background-image:url('{{MainSrc}}{{Card[cardId]}}.png')"></view>
  </view>
 
   <view class="weather">
