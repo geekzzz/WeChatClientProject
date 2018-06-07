@@ -1,6 +1,5 @@
 {
   "pages": [
-    
     "pages/weather/weather",
     "pages/mainWeather/mainWeather",
     "pages/collect/collect",
@@ -26,7 +25,8 @@
     "pages/test/index",
     "pages/note/note",
     "pages/note/detail/index",
-    "pages/record/record"
+    "pages/record/record",
+    "pages/toShare/toShare"
   ],
   "window": {
     "backgroundColor": "#F6F6F6",

@@ -113,9 +113,7 @@ align-items: center;
     justify-content: center;
     color: white;
 }
-.input{
-    
-}
+
 .placeholder{
 position: absolute;
 left: 40rpx;
@@ -131,4 +129,17 @@ left: 40rpx;
     height: 85rpx;
     border-radius: 40px;
   
+}
+
+.from{
+  font-size:30rpx;
+
+  margin-top:50rpx
+}
+
+.message{
+  font-size:26rpx;
+
+  width: 590rpx;
+  margin-top:30rpx;
 }

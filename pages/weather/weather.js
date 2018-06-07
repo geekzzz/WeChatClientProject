@@ -86,8 +86,8 @@ PullData:function(){
         else
         b=6;
         tmp.CardId=b;
-
-
+        tmp.Tips=lifestyle;
+        console.log(tmp.Tips);
         tmp.Cloth = lifestyle[1].brf;
         tmp.Cold = lifestyle[2].brf;
         tmp.Date = daily_forecast_today.date;

@@ -5,7 +5,9 @@ Page({
    * 页面的初始数据
    */
   data: {
-    Message:"",
+    name: "宝贝女儿",
+    Message: "最近升温了，少喝点饮料，都是色素，多吃苦瓜，苦瓜防癌",
+    luyinSrc: "",
     Info:null,
     MainSrc:"	https://wximg-1256782551-1256782551.cos.ap-guangzhou.myqcloud.com/qietu/分享页面/",
 yuyinSrc:"语音输入.png",
@@ -17,11 +19,13 @@ animation2:'',
 animationSrc: ["太阳1.png", "太阳2.png", "太阳3.png"],
 Card: ["snow", "rain", "cloud", "frog", "hot", "sun", "wind"],
 Color:["#a1b3c0","#7ac7db","#7baac7","#b7b7b7","#ff7b2e","#ffba2e","7991bd"],
+tips:[],
   location:"广州",
   weather:"晴",
   weatherId:"100",
   cardId:0,
   temperature:"45°C",
+  tipsId:0,
   weatherTomorrow:"晴",
   weatherAfterTomorrow:"多云",
   index: { aqi: "", qlt: "", pm25: "" },
@@ -54,7 +58,9 @@ location:this.data.Info.Location,
   index: this.data.Info.OtherInfo,
   forecast: left,
   weatherId: this.data.Info.WeatherId,
-  cardId:this.data.Info.CardId
+  cardId:this.data.Info.CardId,
+  tips:this.data.Info.Tips,
+  tipsId:Math.floor(Math.random()*8+1)-1
 })
 
   },
@@ -169,6 +175,9 @@ translate:function(){
     console.log("语音输入");
   },
   share:function(){
+    wx.navigateTo({
+      url: '../toShare/toShare?Data='+JSON.stringify(this.data),
+    })
     console.log("share");
   }
 })
