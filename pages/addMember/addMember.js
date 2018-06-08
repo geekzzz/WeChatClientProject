@@ -127,6 +127,11 @@ Page({
     console.log("添加家人成员");
     var app = getApp();
     var openid = app.globalData.openid;
+
+    var test = getApp().globalData;
+    test.WeatherNeedRefresh=true;
+
+    
     console.log(openid)
     console.log(this.data.array[this.data.index]);
     console.log(this.data.region);

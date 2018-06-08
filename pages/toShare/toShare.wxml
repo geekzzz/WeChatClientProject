@@ -16,7 +16,7 @@
     <view class="block4"><text decode="{{true}}" space="{{true}}">AQI/{{index.aqi}}&nbsp;&nbsp;&nbsp;PM2.5/{{index.pm25}}</text></view>
 <view class="from">来自{{name}}————</view>
 <view class="message">{{Message}}</view>
-
+<view class=""></view>
     <!-- <view class="block5">
       <view wx:for="{{forecast}}" wx:for-index="idx" wx:for-item="item">
        <view class="item">

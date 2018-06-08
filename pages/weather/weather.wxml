@@ -13,7 +13,7 @@
       </view>
       <view class="Block3"><text decode="{{true}}" space="{{true}}">AQI&nbsp;{{item.OtherInfo.aqi}}&nbsp;PM2.5&nbsp;{{item.OtherInfo.pm25}}</text></view>
       <view class="Block4"><text decode="{{true}}" space="{{true}}">{{item.Date}}&nbsp;{{item.Week}}</text></view>
-      <view wx:if="{{item.hasWarning==true}}" class="Block5">{{item.Warning}}</view>
+      <view wx:if="{{item.Warning}}" class="Block5">{{item.Warning}}</view>
       <view wx:else class="Block5">
         <view class="ClothAndRays">
           <text decode="{{true}}" space="{{true}}">穿衣指数：{{item.Cloth}}&nbsp;&nbsp;&nbsp;&nbsp;</text>

@@ -75,7 +75,7 @@ width: 403rpx;
 .block5{
   display: flex;
   font-size: 24rpx;
-  margin-top: 50rpx;
+  margin-top: 40rpx;
 /* background-color: black; */
 justify-content: space-around;
 align-items: center;
@@ -85,8 +85,8 @@ align-items: center;
   display: flex;
   font-size: 24rpx;
   flex-direction: column;
-justify-content: space-around;
-align-items: center;
+  justify-content: space-around;
+  align-items: center;
 }
 
 
