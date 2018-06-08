@@ -28,6 +28,7 @@
 
   <view class="message">
     <view class="yuyin" style="background-image:url('{{MainSrc}}{{yuyinSrc}}')" bindtap='yuyin'></view>
+    <view class="yuyin" style="background-image:url('{{MainSrc}}{{yuyinSrc}}')" bindtap='playRecord'></view>
     
     <view class="inputView" style="">
           <input class="input"  placeholder="为ta留言并分享"  placeholder-class="placeholder"     bindinput="listenerMessageInput"/>
