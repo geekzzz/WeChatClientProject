@@ -47,12 +47,14 @@
  <view class="card">
       <view class="location">{{item.location}}</view>
       <view wx:for="{{item.members}}" wx:for-index="id" wx:for-item="it">
-        <view class="member"> 
+        <view class="member" > 
            <view class="portrait" style="background-image:url('{{MainSrc}}touxiang/{{it.relation}}.png')">
            </view>
            <view class="relation">{{it.relation}}</view>
            <view class="score">亲密得分：{{it.score}}</view>
-           <view class="pencil" bindtap='ModifyNote' style="background-image:url('{{MainSrc}}touxiang/pencil.png')"></view>
+           <view class="pencil" bindtap='ModifyNote'  data-objid="{{it.objid}}" data-province="{{it.province}}" data-city="{{it.city}}" data-district="{{it.district}}" style="background-image:url('{{MainSrc}}touxiang/pencil.png')">
+              <!-- <text space="nbsp" catchtap="ModifyNote" data-id="{{it.id}}" data-province="{{it.province}}" data-city="{{it.city}}" data-district="{{it.district}}">    .     </text> -->
+           </view>
         </view>
       </view>
   </view>
