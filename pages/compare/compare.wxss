@@ -1,0 +1,162 @@
+/* pages/weather/weather.wxss */
+page{
+  height:100%;
+}
+
+.WeatherPage{
+display: flex;
+flex-direction: column;
+background-color: white;
+}
+
+.WeatherCard{
+  position: relative;
+
+  color: white;
+  width: 100%;
+  height: 464rpx;
+  background-size: 100% 100%;
+  margin-top: 60rpx;
+ 
+}
+.WeatherCardReverse{
+  display: flex;
+  flex-direction: column;
+  position: relative;
+  color: white;
+  width: 100%;
+  height: 464rpx;
+  background-size: 100% 100%;
+ margin-top: 60rpx;
+   
+}
+.Block1{
+  position: absolute;
+  left: 80rpx;
+  top:60rpx;
+ 
+}
+.Block1Reverse{
+  position: absolute;
+  right: 80rpx;
+  top:60rpx;
+  display: flex;
+  align-items: flex-end;
+  justify-content: flex-end
+  
+}
+.Location{
+  font-size: 42rpx;
+ 
+}
+.Name{
+  margin-left: 40rpx;
+  font-size: 30rpx;
+
+}
+
+.Block2{
+  position: absolute;
+  left: 80rpx;
+  top:140rpx;
+}
+
+.Block2Reverse{
+  position: absolute;
+  right: 80rpx;
+  top:140rpx;
+ display: flex;
+  align-items: flex-end;
+  justify-content: flex-end
+}
+
+.Temperature{
+font-size: 47rpx;
+ align-items: flex-end;
+
+
+}
+
+.Weather{
+
+font-size: 37.5rpx;
+
+ margin-left: 30rpx;
+
+}
+
+.Block3{
+  position: absolute;
+  left: 80rpx;
+  top: 220rpx;
+  font-size: 25rpx;
+ 
+}
+.Block3Reverse{
+  position: absolute;
+  right: 80rpx;
+  top: 220rpx;
+  font-size: 25rpx;
+
+}
+.Block4{
+  position: absolute;
+  left: 80rpx;
+  top: 280rpx;
+  font-size: 21rpx;
+
+}
+.Block4Reverse{
+  position: absolute;
+  right: 80rpx;
+  top: 280rpx;
+  font-size: 21rpx;
+
+}
+.Block5{
+  position: absolute;
+  display: flex;
+  flex-direction: column;
+  left: 80rpx;
+  top:330rpx;
+  font-size: 25rpx;
+  align-items: flex-start;
+}
+.Block5Reverse{
+  position: absolute;
+  display: flex;
+  flex-direction: column;
+  right: 80rpx;
+  top:330rpx;
+  font-size: 25rpx;
+  align-items: flex-end
+}
+
+
+.WeatherIcon{
+  position: absolute;
+
+  right: 113rpx;
+  top: 110rpx;
+}
+.WeatherIconReverse{
+  position: absolute;
+  left: 113rpx;
+  top: 110rpx;
+}
+
+.AddButton{
+  width: 71rpx;
+  height: 71rpx;
+  background-size: 100% 100%;
+  align-self:  center;
+margin-top: 60rpx;
+}
+
+.BottomBg{
+  width: 512rpx;
+  height: 444rpx;
+  background-size: 100% 100%;
+  align-self: center;
+  margin-top: 28rpx;
+}

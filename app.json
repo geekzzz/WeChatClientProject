@@ -26,7 +26,8 @@
     "pages/note/note",
     "pages/note/detail/index",
     "pages/record/record",
-    "pages/toShare/toShare"
+    "pages/toShare/toShare",
+    "pages/compare/compare"
   ],
   "window": {
     "backgroundColor": "#F6F6F6",
@@ -48,7 +49,7 @@
         "text": "晴雨表"
       },
       {
-        "pagePath": "pages/collect/collect",
+        "pagePath": "pages/compare/compare",
         "iconPath": "image/2.png",
         "selectedIconPath": "image/2.2.png",
         "text": "收藏夹"

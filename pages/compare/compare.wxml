@@ -1,0 +1,114 @@
+<!--pages/compare/compare.wxml-->
+<!--pages/weather/weather.wxml-->
+<view class="WeatherPage">
+
+  <view wx:for="{{Info}}" wx:for-index="idx" wx:for-item="item">
+
+    <view wx:if="{{idx%2==0}}" id="{{idx}}" bindtap="navigate" class="WeatherCard" style="background-image:url('{{MainSrc}}/{{WeatherCard[item.CardId]}}')">
+      <view class="Block1">
+        <text class="Location">{{item.Location}}</text>
+      </view>
+      <view class="Block2">
+        <text class="Temperature">{{item.Temperature}}</text>
+        <text class="Weather">{{item.Weather}}</text>
+      </view>
+      <view class="Block3"><text decode="{{true}}" space="{{true}}">AQI&nbsp;{{item.OtherInfo.aqi}}&nbsp;PM2.5&nbsp;{{item.OtherInfo.pm25}}</text></view>
+      <view class="Block4"><text decode="{{true}}" space="{{true}}">{{item.Date}}&nbsp;{{item.Week}}</text></view>
+      <view wx:if="{{item.Warning}}" class="Block5">{{item.Warning}}</view>
+      <view wx:else class="Block5">
+        <view class="ClothAndRays">
+          <text decode="{{true}}" space="{{true}}">穿衣指数：{{item.Cloth}}&nbsp;&nbsp;&nbsp;&nbsp;</text>
+          <text>紫外线：{{item.Rays}}</text>
+        </view>
+        <view class="ColdAndSports">
+          <text decode="{{true}}" space="{{true}}">感冒指数：{{item.Cold}}&nbsp;&nbsp;&nbsp;&nbsp;</text>
+          <text>运动指数：{{item.Sports}}</text>
+        </view>
+      </view>
+      <view animation="{{animation0}}" class="WeatherIcon">
+        <image style="width:250rpx;height:250rpx" src="{{MainSrc}}/和风天气/{{item.WeatherId}}.png"></image>
+      </view>
+    </view>
+
+    <view wx:else bindtap="navigate" id="{{idx}}" class="WeatherCardReverse" style="background-image:url('{{MainSrc}}/{{WeatherCardReverse[item.CardId]}}')">
+          <view class=" Block1Reverse ">
+           <view class="Location ">{{item.Location}}</view>
+          </view>
+          <view class="Block2Reverse">
+             <view class="Temperature ">{{item.Temperature}}</view>
+                <view class="Weather ">{{item.Weather}}</view>
+          </view>
+          <view class="Block3Reverse "><text decode="{{true}}" space="{{true}}">AQI&nbsp;{{item.OtherInfo.aqi}}&nbsp;PM2.5&nbsp;{{item.OtherInfo.pm25}}</text></view>
+          <view class="Block4Reverse "><text decode="{{true}}" space="{{true}}">{{item.Date}}&nbsp;{{item.Week}}</text></view>
+          <view wx:if="{{item.Warning}}" class="Block5Reverse">{{item.Warning}}</view>
+          <view wx:else class="Block5Reverse ">
+            <view class="ClothAndRays ">
+                <text decode="{{true}}" space="{{true}} ">穿衣指数：{{item.Cloth}}&nbsp;&nbsp;&nbsp;&nbsp;</text>                                <text>紫外线：{{item.Rays}}</text>
+            </view>
+            <view class="ColdAndSports ">
+                <text decode="{{true}} " space="{{true}} ">感冒指数：{{item.Cold}}&nbsp;&nbsp;&nbsp;&nbsp;</text>   
+                <text>运动指数：{{item.Sports}}</text>
+            </view>
+          </view>
+          <view animation="{{animation1}}" class="WeatherIconReverse ">
+            <image style="width:250rpx;height:250rpx " src="{{MainSrc}}/和风天气/{{item.WeatherId}}.png"></image>
+          </view>
+    </view>
+
+
+  </view> 
+
+
+<view class="AddButton" bindtap='Add' style="background-image:url('{{MainSrc}}/{{AddButton}}')"></view>
+
+<view wx:if="{{Info.length==1}}" class="BottomBg" style="background-image:url('{{MainSrc}}/{{BottomBg}}')"></view>
+
+
+
+<!-- <view class="WeatherCard " style="background-image:url( '{{MainSrc}}/{{WeatherCard[0]}}') ">
+<view class="Block1 ">
+<text class="Location ">{{Info[0].Location}}</text>
+<text class="Name ">{{Info[0].Name}}</text>
+</view>
+<view class="Block2 ">
+<text class="Temperature ">{{Info[0].Temperature}}</text>
+<text class="Weather ">{{Info[0].Weather}}</text>
+</view>
+<view class="Block3 ">{{Info[0].OtherInfo}}</view>
+<view class="Block4 ">{{Info[0].Date}}</view>
+<view wx:if="{{Info[0].Warning}} " class="Block5 ">{{Info[0].Warning}}</view>
+<view wx:else class="Block5 ">
+<view class="ClothAndRays "><text decode="{{true}} " space="{{true}} ">穿衣指数：{{Info[0].Cloth}}&nbsp;&nbsp;&nbsp;&nbsp;</text>   <text>紫外线：{{Info[0].Rays}}</text>
+</view>
+<view class="ColdAndSports "><text decode="{{true}} " space="{{true}} ">感冒指数：{{Info[0].Cold}}&nbsp;&nbsp;&nbsp;&nbsp;</text>   <text>运动指数：{{Info[0].Sports}}</text>
+</view>
+</view>
+<view class="WeatherIcon "><image style="width:180rpx;height:180rpx " src="{{MainSrc}}/{{WeatherIcon[0]}} "></image></view>
+</view>
+
+
+
+
+<view class="WeatherCardReverse " style="background-image:url( '{{MainSrc}}/{{WeatherCardReverse[0]}}') ">
+<view class="Block1Reverse ">
+<view class="Location ">{{Info[1].Location}}</view>
+<view class="Name ">{{Info[1].Name}}</view>
+</view>
+<view class="Block2Reverse ">
+<view class="Temperature ">{{Info[1].Temperature}}</view>
+<view class="Weather ">{{Info[1].Weather}}</view>
+</view>
+<view class="Block3Reverse ">{{Info[1].OtherInfo}}</view>
+<view class="Block4Reverse ">{{Info[1].Date}}</view>
+<view wx:if="{{1<0}}" class="Block5 ">fuck{{Info[1].Warning}}</view>
+<view wx:else class="Block5Reverse ">
+<view class="ClothAndRays "><text decode="{{true}} " space="{{true}} ">穿衣指数：{{Info[0].Cloth}}&nbsp;&nbsp;&nbsp;&nbsp;</text>   <text>紫外线：{{Info[0].Rays}}</text>
+</view>
+<view class="ColdAndSports "><text decode="{{true}} " space="{{true}} ">感冒指数：{{Info[0].Cold}}&nbsp;&nbsp;&nbsp;&nbsp;</text>   <text>运动指数：{{Info[0].Sports}}</text>
+</view>
+</view>
+<view class="WeatherIconReverse "><image style="width:180rpx;height:180rpx " src="{{MainSrc}}/{{WeatherIcon[0]}} "></image></view>
+</view>  -->
+
+
+</view>

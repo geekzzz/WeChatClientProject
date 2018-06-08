@@ -14,7 +14,7 @@ Page({
     //   { Location: "牡丹江", Name: [], Temperature: "35°C", Weather: "晴转多云", WeatherId: "100", CardId: 5, OtherInfo: { aqi: "", qlt: "", pm25: "" }, Tips: [], Date: "2018.7.28--Sunday", Week: "", Warning: "", hasWarning: false, Cloth: "冷", Rays: "最强", Cold: "极易发", Sports: "不适宜", forecast: [] }
     // ],
     Info: [
-      { Location: "广州市", Name: [], Temperature: "35°C", Weather: "晴", WeatherId: "100", CardId: 5, OtherInfo: { aqi: "", qlt: "", pm25: "" }, Tips: [], Date: "2018.7.28--Sunday", Week: "", Warning: "", hasWarning: true, Cloth: "冷", Rays: "最强", Cold: "极易发", Sports: "不适宜", forecast: [] },
+      { Location: "广州市", Name: [], Temperature: "35°C", Weather: "晴", WeatherId: "100", CardId: 5, OtherInfo: { aqi: "", qlt: "", pm25: "" }, Tips: [], Date: "2018.7.28--Sunday", Week: "", Warning: "", hasWarning: true, Cloth: "冷", Rays: "最强", Cold: "极易发", Sports: "不适宜", forecast: [] }, { Location: "杭州市", Name: [], Temperature: "35°C", Weather: "晴", WeatherId: "100", CardId: 5, OtherInfo: { aqi: "", qlt: "", pm25: "" }, Tips: [], Date: "2018.7.28--Sunday", Week: "", Warning: "", hasWarning: true, Cloth: "冷", Rays: "最强", Cold: "极易发", Sports: "不适宜", forecast: [] },
     ],
     // Info: [{ Location: "广州", Name: "我", Temperature: "35°C", Weather: "晴", OtherInfo: "AQI 15 空气质量 优", Date: "2018.7.28--Sunday", Warning: "20号西瓜台风将登陆广州", hasWarning: true, Cloth: "冷", Rays: "最强", Cold: "极易发", Sports: "不适宜" }],
     WeatherIcon: ["test1.png", "iconsnow.png", "iconrain.png", ""],
@@ -24,9 +24,6 @@ Page({
     AddButton: "addButton.png",
     animation0: "",
     animation1: "",
-    canRefresh: false,
-
-
   },
   navigate: function (event) {
     console.log(event);
@@ -37,103 +34,104 @@ Page({
       url: '../mainWeather/mainWeather?Info=' + JSON.stringify(that.data.Info[i]),
     })
   },
-  Add: function () {
-    console.log("AddNumber");
-    wx.navigateTo({
-      url: '../addMember/addMember',
-    })
-  },
-  GetNote: function()
-  {
-    var that = this
-    //先重置数据
-    this.data.Info = [
-      { Location: "广州市", Name: [], Temperature: "35°C", Weather: "晴", WeatherId: "100", CardId: 5, OtherInfo: { aqi: "", qlt: "", pm25: "" }, Tips: [], Date: "2018.7.28--Sunday", Week: "", Warning: "20号西瓜台风将登陆广州", hasWarning: true, Cloth: "冷", Rays: "最强", Cold: "极易发", Sports: "不适宜", forecast: [] },
-    ],
-    wx.login({
-      success: function (res) {
-        var that2 = that
-        if (res.code) {
-          //发起网络请求
-         // console.log(res.code)
-          Bmob.User.requestOpenId(res.code, {
-            success: function (result) {
-              var that3 = that2
-              result.openid;
-            //  console.log(result)
-              var Note = Bmob.Object.extend("note");
-              var query = new Bmob.Query(Note);
-              var app = getApp();
-              var openidMy = result.openid;
-              query.equalTo("openid", openidMy);
-              console.log('openidMy', openidMy)
-              query.find({
-                success: function (results) {
-                  // 循环处理查询到的数据
-                  var that4 = that3
-                //  console.log('查询成功', results);
-                  console.log(that4.data.Info)
-                  if (results.length > 0) {
-                    console.log('...........', results[0].attributes.city)
-                    var set = new Set();
-                    for (var i = 0; i < results.length; i++) {
-                    //  console.log(results[i].attributes.city)
-                      set.add(results[i].attributes.city)
-                    }
-                  //  console.log(set)
-                    for (var x of set) {
-                      //console.log(x)
-                      var LName = [];
-                      for (var i = 0; i < results.length; i++) {
-                        if (results[i].attributes.city == x) {
-                          LName.push(results[i].attributes.name)
-                        }
-                      }
-                    //  console.log(LName)
-                      var obj =
-                        {
-                          Location: x,
-                          Name: LName,
-                          Temperature: "35°C",
-                          Weather: "晴",
-                          WeatherId: "100",
-                          CardId: 5,
-                          OtherInfo: { aqi: "", qlt: "", pm25: "" },
-                          Tips: [],
-                          Date: "2018.7.28--Sunday",
-                          Week: "",
-                          Warning: "",
-                          hasWarning: true,
-                          Cloth: "冷",
-                          Rays: "最强",
-                          Cold: "极易发", Sports: "不适宜", forecast: []
-                        };
-                      
-                      that4.data.Info.push(obj)
-                    }
-                    // that4.setData({
-                    //   Info :that4.data.Info
-                    // })
-                    // console.log(that4.data.Info)
-                  }
-                that4.PullData();
-                },
-                error: function (error) {
-                  console.log("查询失败: " + error.code + " " + error.message);
-                }
-              });
-            },
-            error: function (error) {
-              console.log("Error: " + error.code + " " + error.message);
-            }
-          });
-        } else {
-          console.log('获取用户登录态失败！' + res.errMsg)
-          common.showTip('获取用户登录态失败！', 'loading');
-        }
-      }
-    });
-  },
+
+  // Add: function () {
+  //   console.log("AddNumber");
+  //   wx.navigateTo({
+  //     url: '../addMember/addMember',
+  //   })
+  // },
+
+  // GetNote: function () {
+  //   var that = this
+  //   //先重置数据
+  //   this.data.Info = [
+  //     { Location: "广州市", Name: [], Temperature: "35°C", Weather: "晴", WeatherId: "100", CardId: 5, OtherInfo: { aqi: "", qlt: "", pm25: "" }, Tips: [], Date: "2018.7.28--Sunday", Week: "", Warning: "20号西瓜台风将登陆广州", hasWarning: true, Cloth: "冷", Rays: "最强", Cold: "极易发", Sports: "不适宜", forecast: [] },
+  //   ],
+  //     wx.login({
+  //       success: function (res) {
+  //         var that2 = that
+  //         if (res.code) {
+  //           //发起网络请求
+  //           // console.log(res.code)
+  //           Bmob.User.requestOpenId(res.code, {
+  //             success: function (result) {
+  //               var that3 = that2
+  //               result.openid;
+  //               //  console.log(result)
+  //               var Note = Bmob.Object.extend("note");
+  //               var query = new Bmob.Query(Note);
+  //               var app = getApp();
+  //               var openidMy = result.openid;
+  //               query.equalTo("openid", openidMy);
+  //               console.log('openidMy', openidMy)
+  //               query.find({
+  //                 success: function (results) {
+  //                   // 循环处理查询到的数据
+  //                   var that4 = that3
+  //                   //  console.log('查询成功', results);
+  //                   console.log(that4.data.Info)
+  //                   if (results.length > 0) {
+  //                     console.log('...........', results[0].attributes.city)
+  //                     var set = new Set();
+  //                     for (var i = 0; i < results.length; i++) {
+  //                       //  console.log(results[i].attributes.city)
+  //                       set.add(results[i].attributes.city)
+  //                     }
+  //                     //  console.log(set)
+  //                     for (var x of set) {
+  //                       //console.log(x)
+  //                       var LName = [];
+  //                       for (var i = 0; i < results.length; i++) {
+  //                         if (results[i].attributes.city == x) {
+  //                           LName.push(results[i].attributes.name)
+  //                         }
+  //                       }
+  //                       //  console.log(LName)
+  //                       var obj =
+  //                         {
+  //                           Location: x,
+  //                           Name: LName,
+  //                           Temperature: "35°C",
+  //                           Weather: "晴",
+  //                           WeatherId: "100",
+  //                           CardId: 5,
+  //                           OtherInfo: { aqi: "", qlt: "", pm25: "" },
+  //                           Tips: [],
+  //                           Date: "2018.7.28--Sunday",
+  //                           Week: "",
+  //                           Warning: "",
+  //                           hasWarning: true,
+  //                           Cloth: "冷",
+  //                           Rays: "最强",
+  //                           Cold: "极易发", Sports: "不适宜", forecast: []
+  //                         };
+
+  //                       that4.data.Info.push(obj)
+  //                     }
+  //                     // that4.setData({
+  //                     //   Info :that4.data.Info
+  //                     // })
+  //                     // console.log(that4.data.Info)
+  //                   }
+  //                   that4.PullData();
+  //                 },
+  //                 error: function (error) {
+  //                   console.log("查询失败: " + error.code + " " + error.message);
+  //                 }
+  //               });
+  //             },
+  //             error: function (error) {
+  //               console.log("Error: " + error.code + " " + error.message);
+  //             }
+  //           });
+  //         } else {
+  //           console.log('获取用户登录态失败！' + res.errMsg)
+  //           common.showTip('获取用户登录态失败！', 'loading');
+  //         }
+  //       }
+  //     });
+  // },
 
   PullData: function () {
     var test = getApp().globalData;
@@ -146,7 +144,7 @@ Page({
     for (var i = 0; i < this.data.Info.length; i++) {
 
 
-      var url = test.heWeather + 'weather?key=' + test.key + '&location=' + this.data.Info[i].Location.replace("市","");
+      var url = test.heWeather + 'weather?key=' + test.key + '&location=' + this.data.Info[i].Location.replace("市", "");
 
       console.log(url);
 
@@ -166,7 +164,7 @@ Page({
           var lifestyle = res.data.HeWeather6[0].lifestyle;
           var j;
           for (j = 0; j < that.data.Info.length; j++)
-            if (that.data.Info[j].Location.replace("市","") == basic.location)
+            if (that.data.Info[j].Location.replace("市", "") == basic.location)
               break;
 
           var tmp = that.data.Info[j];
@@ -203,7 +201,7 @@ Page({
           tmp.Rays = lifestyle[5].brf;
           tmp.Sports = lifestyle[3].brf;
           tmp.forecast = res.data.HeWeather6[0].daily_forecast;
-          tmp.Tips=lifestyle;
+          tmp.Tips = lifestyle;
           var t = "Info[" + j + "]";
           that.setData({
             [t]: tmp,
@@ -229,7 +227,7 @@ Page({
           var pm25 = air_now_city.pm25;
           var j;
           for (j = 0; j < that.data.Info.length; j++)
-            if (that.data.Info[j].Location.replace("市","") == basic.location)
+            if (that.data.Info[j].Location.replace("市", "") == basic.location)
               break;
           var tmp = that.data.Info[j];
           tmp.OtherInfo.aqi = aqi;
@@ -243,7 +241,7 @@ Page({
 
         }
       })
-      
+
     }
 
   },
@@ -252,8 +250,8 @@ Page({
    */
   onLoad: function (options) {
     console.log("onLoad");
-    this.GetNote();
-   // this.PullData();
+    
+    this.PullData();
     //{ Location: "广州", Name: [], Temperature: "35°C", Weather: "晴", WeatherId: "100", CardId: 5, OtherInfo: { aqi: "", qlt: "", pm25: "" }, Tips: [], Date: "2018.7.28--Sunday", Week: "", Warning: "20号西瓜台风将登陆广州", hasWarning: true, Cloth: "冷", Rays: "最强", Cold: "极易发", Sports: "不适宜", forecast: [] },
   },
 
@@ -291,14 +289,14 @@ Page({
    * 生命周期函数--监听页面显示
    */
   onShow: function () {
-    var test = getApp().globalData;
-    if (test.WeatherNeedRefresh == true) {
-this.GetNote();
-//this.PullData();
-    }
+    // var test = getApp().globalData;
+    // if (test.WeatherNeedRefresh == true) {
+    //   this.GetNote();
+    //   //this.PullData();
+    // }
 
-    test.WeatherNeedRefresh=false;
-    console.log("onshow");
+    // test.WeatherNeedRefresh = false;
+    // console.log("onshow");
   },
 
   /**
@@ -335,6 +333,6 @@ this.GetNote();
   onShareAppMessage: function () {
 
   },
-  
+
 })
 

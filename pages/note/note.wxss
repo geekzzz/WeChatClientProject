@@ -25,7 +25,7 @@ background-color: white;
   position: relative;
   width: 694rpx;
   height: 148rpx;
-  background-color: yellow;
+ 
   margin-top:30rpx; 
 }
 .portrait{
