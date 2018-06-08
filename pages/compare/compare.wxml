@@ -59,10 +59,6 @@
   </view> 
 
 
-<view class="AddButton" bindtap='Add' style="background-image:url('{{MainSrc}}/{{AddButton}}')"></view>
-
-<view wx:if="{{Info.length==1}}" class="BottomBg" style="background-image:url('{{MainSrc}}/{{BottomBg}}')"></view>
-
 
 
 <!-- <view class="WeatherCard " style="background-image:url( '{{MainSrc}}/{{WeatherCard[0]}}') ">
