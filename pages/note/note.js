@@ -20,7 +20,7 @@ Page({
     //family: [{ location: "", members: [{ relation: "", score: 0 }] }],
     family: [],
     location: ["杭州", "广州"],
-    members: [[{ relation: "爸爸", score: 80 }, { relation: "妈妈", score: 80 }], [{ relation: "女儿", score: 80 }]]
+    members: [[{ relation: "爸爸", score: 80}, { relation: "妈妈", score: 80 }], [{ relation: "女儿", score: 80 }]],
   },
   onReady: function (e) {
 
@@ -66,10 +66,12 @@ Page({
   /*
 *修改note
 */
-  ModifyNote: function () {
-    console.log('modify')
+  ModifyNote: function (event) {
+    console.log(event)
+    //console.log('modify')
+    
     wx.navigateTo({
-      url: './detail/index',
+      url: './detail/index?Data=' + JSON.stringify(event.target.dataset),
     })
   },
 
@@ -130,6 +132,10 @@ function getNote(t, k) {
                 {
                   relation: results[i].attributes.name,
                   score: 80,
+                  objid : results[i].id,
+                  province: results[i].attributes.province,
+                  city: results[i].attributes.city,
+                  district: results[i].attributes.district,
                 };
               //LName.push(results[i].attributes.name)
               LName.push(member)

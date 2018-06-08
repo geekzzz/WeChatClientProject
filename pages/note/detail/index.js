@@ -21,9 +21,19 @@ Page({
    * 生命周期函数--监听页面加载
    */
   onLoad: function (e) {
-    console.log(e.objectId);
-    this.data.nowId = e.objectId;
-    var objectId = e.objectId;
+    console.log(e);
+    var initData = JSON.parse(e.Data) 
+    console.log(initData)
+    this.data.region[0] = initData.province
+    this.data.region[1] = initData.city
+    this.data.region[2] = initData.district
+    this.setData(
+      {
+        region: this.data.region
+      }
+    )
+    this.data.nowId = initData.objid;
+    var objectId = initData.objid;
     var that = this;
     var Note = Bmob.Object.extend("note");
     var query = new Bmob.Query(Note);
