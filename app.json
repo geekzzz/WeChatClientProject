@@ -54,7 +54,7 @@
         "text": "收藏夹"
       },
       {
-        "pagePath": "pages/record/record",
+        "pagePath": "pages/note/note",
         "iconPath": "image/3.png",
         "selectedIconPath": "image/3.2.png",
         "text": "笔记本"

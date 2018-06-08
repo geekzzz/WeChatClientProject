@@ -23,7 +23,10 @@ Page({
     BottomBg: "bottomBg.png",
     AddButton: "addButton.png",
     animation0: "",
-    animation1: ""
+    animation1: "",
+    canRefresh: false,
+
+
   },
   navigate: function (event) {
     console.log(event);
@@ -136,7 +139,7 @@ Page({
     var that = this;
     for (var i = 0; i < this.data.Info.length; i++) {
       var url = test.heWeather + 'weather?key=' + test.key + '&location=' + this.data.Info[i].Location;
-      //console.log(url);
+      console.log(url);
 
       wx.request({
         url: url,
