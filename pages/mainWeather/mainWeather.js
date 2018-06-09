@@ -6,9 +6,9 @@ Page({
    * 页面的初始数据
    */
   data: {
-    name: "宝贝女儿",
+    name: "",
     Message: "最近升温了，少喝点饮料，都是色素，多吃苦瓜，苦瓜防癌",
-    luyinSrc: '',
+    luyinSrc:"",
     Info: null,
     MainSrc: "	https://wximg-1256782551-1256782551.cos.ap-guangzhou.myqcloud.com/qietu/分享页面/",
     yuyinSrc: "语音输入.png",
@@ -81,6 +81,7 @@ Page({
     }
     console.log(this.data)
     var that = this;
+   
     // console.log('options.recordurl',options.recordurl)
     // if(typeof(options.recordurl) != undefined)
     // {
@@ -91,9 +92,9 @@ Page({
       that.tip("录音失败！")
     });
     this.recorderManager.onStop(function (res) {
-      that.setData({
-        src: res.tempFilePath
-      })
+      // that.setData({
+      //   src: res.tempFilePath
+      // })
       console.log(res.tempFilePath)
       that.tip("录音完成！")
       console.log("停止录音", res.tempFilePath)
@@ -225,6 +226,7 @@ Page({
     this.recorderManager.start({
       format: 'mp3'
     });
+    this.tip("开始录音，再按一次结束语音！");
   },
 
   /**
@@ -232,6 +234,7 @@ Page({
    */
   stopRecord: function () {
     this.recorderManager.stop();
+    this.tip("完成录音！");
   },
 
   /**
@@ -265,7 +268,28 @@ Page({
    * 用户点击右上角分享
    */
   onShareAppMessage: function () {
-
+    console.log(getApp().globalData.userInfo);
+    this.data.name = getApp().globalData.userInfo.nickName;
+    
+    var tmp = {
+      location: this.data.location,
+      temperature: this.data.temperature,
+      weather: this.data.weather,
+      index: this.data.index,
+      forecast: this.data.forecast,
+      weatherId: this.data.weatherId,
+      cardId: this.data.cardId,
+      tips: this.data.tips,
+      tipsId: this.data.tipsId,
+      Message: this.data.Message,
+      luyinSrc: this.data.luyinSrc,
+      name: this.data.name
+    }
+    console.log(tmp);
+  return{
+  title:"与你同晴",
+  path: 'pages/toShare/toShare?Data=' + JSON.stringify(tmp)
+}
   },
   listenerMessageInput: function (e) {
     this.data.Message = e.detail.value;
@@ -283,9 +307,9 @@ Page({
     }
   },
   share: function () {
-    wx.navigateTo({
-      url: '../toShare/toShare?Data=' + JSON.stringify(this.data),
-    })
+
+    this.onShareAppMessage();
     console.log("share");
+
   }
 })

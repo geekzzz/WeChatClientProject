@@ -34,7 +34,7 @@ Page({
     var i = parseInt(event.currentTarget.id);
     var that = this;
     wx.navigateTo({
-      url: '../mainWeather/mainWeather?Info=' + JSON.stringify(that.data.Info[i]),
+      url: '../mainWeather/mainWeather?Key=2&Info=' + JSON.stringify(that.data.Info[i]),
     })
   },
   Add: function () {
@@ -292,12 +292,11 @@ Page({
    */
   onShow: function () {
     var test = getApp().globalData;
-    if (test.WeatherNeedRefresh == true) {
+    if (test.WeatherNeedRefresh1 == true) {
 this.GetNote();
 //this.PullData();
     }
-
-    test.WeatherNeedRefresh=false;
+    test.WeatherNeedRefresh1=false;
     console.log("onshow");
   },
 

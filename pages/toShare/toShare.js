@@ -16,6 +16,8 @@ Page({
     animation0: '',
     animation1: '',
     animation2: '',
+    animation3: '',
+    animation4: '',
     animationSrc: ["太阳1.png", "太阳2.png", "太阳3.png"],
     Card: ["snow", "rain", "cloud", "frog", "hot", "sun", "wind"],
     Color: ["#a1b3c0", "#7ac7db", "#7baac7", "#b7b7b7", "#ff7b2e", "#ffba2e", "7991bd"],
@@ -36,25 +38,43 @@ Page({
    * 生命周期函数--监听页面加载
    */
   onLoad: function (options) {
-
-    this.data = JSON.parse(options.Data);
-    console.log(this.data);
-
+    {
+      var t=JSON.parse(options.Data);
+      this.setData({
+        location: t.location,
+        temperature: t.temperature,
+        weather: t.weather,
+        index: t.index,
+        forecast: t.forecast,
+        weatherId: t.weatherId,
+        cardId: t.cardId,
+        tips: t.tips,
+        tipsId: t.tipsId,
+        Message: t.Message,
+        luyinSrc: t.luyinSrc,
+        name: t.name
+      })
+    }
    
-    this.setData({
-      location: this.data.location,
-      temperature: this.data.temperature,
-      weather: this.data.weather,
-      index: this.data.index,
-      forecast: this.data.forecast,
-      weatherId: this.data.weatherId,
-      cardId: this.data.cardId,
-      tips: this.data.tips,
-      tipsId:this.data.tipsId,
-      Message:this.data.Message,
-      luyinSrc:this.data.luyinSrc,
-      name:this.data.name
-    })
+    // {
+    // console.log(options);
+    // this.data = JSON.parse(options.Data);
+    // console.log(this.data);
+    // this.setData({
+    //   location: this.data.location,
+    //   temperature: this.data.temperature,
+    //   weather: this.data.weather,
+    //   index: this.data.index,
+    //   forecast: this.data.forecast,
+    //   weatherId: this.data.weatherId,
+    //   cardId: this.data.cardId,
+    //   tips: this.data.tips,
+    //   tipsId:this.data.tipsId,
+    //   Message:this.data.Message,
+    //   luyinSrc:this.data.luyinSrc,
+    //   name:this.data.name
+    // })
+    // }
     // var left = this.data.forecast;
     // var right = this.data.Info.forecast;
     // console.log(left);
@@ -77,7 +97,7 @@ Page({
     //   tips: this.data.Info.Tips,
     //   tipsId: Math.floor(Math.random() * 8 + 1) - 1
     // })
-
+   
   },
 
   /**
@@ -102,6 +122,18 @@ Page({
       delay: 0,
       transformOrigin: "100% 0 0"
     });
+    this.animation3 = wx.createAnimation({
+      duration: 2000,
+      timingFunction: "linear",
+      delay: 0,
+      transformOrigin: "50% 50% 0"
+    });
+    this.animation4 = wx.createAnimation({
+      duration: 2000,
+      timingFunction: "linear",
+      delay: 0,
+      transformOrigin: "50% 50% 0"
+    });
     var n = 0;
     setInterval(function () {
       n = n + 1;
@@ -113,10 +145,14 @@ Page({
     this.animation1.scale(0.8, 0.8).step({}).scale(1, 1).step();
     this.animation2.scale(0.7, 0.7).step({}).scale(1, 1).step();
 
+    this.animation3.rotate(-30).step().rotate(30).step();
+    this.animation4.opacity(0).step({}).opacity(1).step();
     this.setData({
       animation0: this.animation0.export(),
       animation1: this.animation1.export(),
       animation2: this.animation2.export(),
+      animation3: this.animation3.export(),
+      animation4: this.animation4.export(),
     })
   },
   /**
@@ -180,16 +216,42 @@ Page({
    * 用户点击右上角分享
    */
   onShareAppMessage: function () {
-
+    console.log(this.data);
+    var t=JSON.stringify(this.data);
+var tmp={
+    location: this.data.location,
+      temperature: this.data.temperature,
+        weather: this.data.weather,
+          index: this.data.index,
+            forecast: this.data.forecast,
+              weatherId: this.data.weatherId,
+                cardId: this.data.cardId,
+                  tips: this.data.tips,
+                    tipsId:this.data.tipsId,
+                      Message:this.data.Message,
+                        luyinSrc:this.data.luyinSrc,
+                          name:this.data.name
+}
+return{
+  title:"与你同晴",
+  
+  path:"pages/toShare/toShare?Data="+JSON.stringify(tmp)
+}
   },
   listenerMessageInput: function (e) {
     this.data.Message = e.detail.value;
   },
 
-  yuyin: function () {
-    console.log("语音输入");
+  
+  playRecord: function () {
+    var innerAudioContext = wx.createInnerAudioContext();
+    var that = this;
+    var src = this.data.luyinSrc;
+    if (src == '') {
+      this.tip("传送录音失败！")
+      return;
+    }
+    innerAudioContext.src = this.data.luyinSrc;
+    innerAudioContext.play()
   },
-  share: function () {
-    console.log("share");
-  }
 })

@@ -129,8 +129,8 @@ Page({
     var openid = app.globalData.openid;
 
     var test = getApp().globalData;
-    test.WeatherNeedRefresh=true;
-
+    test.WeatherNeedRefresh1=true;
+    test.WeatherNeedRefresh2=true;
     
     console.log(openid)
     console.log(this.data.array[this.data.index]);
@@ -153,17 +153,11 @@ Page({
         console.log('error save');
       }
     });
+
+
     wx.navigateBack({
       delta: 1
     });
-    wx.navigateTo({
-      url: '../collect/collect',
-      success: (result) => {
-        console.log("111");
-      },
-      fail: (result) => {
-        console.log(result);
-      },
-    })
+    
   }
 })

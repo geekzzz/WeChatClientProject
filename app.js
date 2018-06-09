@@ -29,7 +29,7 @@ App({
         if (res.code) {
           //发起网络请求
           console.log(res.code)
-
+console.log(res);
           Bmob.User.requestOpenId(res.code, {
             success: function (result) {
               that.globalData.openid = result.openid;
@@ -44,6 +44,13 @@ App({
           console.log('获取用户登录态失败！' + res.errMsg)
           common.showTip('获取用户登录态失败！', 'loading');
         }
+
+        wx.getUserInfo({
+          success: function (res) {
+            that.globalData.userInfo = res.userInfo
+            console.log(that.globalData.userInfo);
+          }
+        })
       }
     });
   },
@@ -58,6 +65,7 @@ App({
           wx.getUserInfo({
             success: function (res) {
               that.globalData.userInfo = res.userInfo
+              console.log(that.globalData.userInfo);
               typeof cb == 'function' && cb(that.globalData.userInfo)
             }
           })
@@ -71,7 +79,8 @@ App({
     openid: 0,
     heWeather:"https://free-api.heweather.com/s6/",
     key:"366e80dfa0564b88a64d4f9898b427ca",
-    WeatherNeedRefresh: false
+    WeatherNeedRefresh1: false,
+    WeatherNeedRefresh2: false,
   }
 })
 

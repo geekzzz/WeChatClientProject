@@ -14,9 +14,14 @@
     <view class="block2">{{temperature}}</view>
     <view class="block3"><text decode="{{true}}" space="{{true}}" style="font-size:50rpx font-weight:700">小贴士：&nbsp;</text>{{tips[tipsId].txt}}</view>
     <view class="block4"><text decode="{{true}}" space="{{true}}">AQI/{{index.aqi}}&nbsp;&nbsp;&nbsp;PM2.5/{{index.pm25}}</text></view>
-<view class="from">来自{{name}}————</view>
-<view class="message">{{Message}}</view>
-<view class=""></view>
+<view class="from">来自{{name}}———</view>
+
+<view wx:if="{{luyinSrc}}" class="play">
+<view animation="{{animation3}}" class="yinbiao" bindtap="playRecord" style="background-image:url('{{MainSrc}}音标/{{Card[cardId]}}.png')"></view>
+<view animation="{{animation4}}" class="yinbiaoxian" style="background-image:url('{{MainSrc}}音乐线/{{Card[cardId]}}.png')"></view>
+</view>
+<view wx:else class="message">{{Message}}</view>
+
     <!-- <view class="block5">
       <view wx:for="{{forecast}}" wx:for-index="idx" wx:for-item="item">
        <view class="item">

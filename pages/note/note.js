@@ -26,12 +26,7 @@ Page({
 
   },
   onLoad: function () {
-    var a = this.data.map;
-    a["hangzhou"] = ["爸爸", "妈妈"];
-    a["guangzhou"] = ["女儿"];
-    that = this;
-    console.log("this.data.map");
-    console.log(this.data.map);
+
     // wx.showShareMenu({
     //   withShareTicket: true //要求小程序返回分享目标信息
     // })
@@ -50,10 +45,8 @@ Page({
     })
   },
   onShow: function () {
-
-    getNote(this);
-
-
+         getNote(this);
+    tmp.WeatherNeedRefresh2 = false;
     wx.getSystemInfo({
       success: (res) => {
         that.setData({

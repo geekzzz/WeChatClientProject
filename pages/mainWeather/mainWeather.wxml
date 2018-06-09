@@ -28,13 +28,13 @@
 
   <view class="message">
     <view class="yuyin" style="background-image:url('{{MainSrc}}{{yuyinSrc}}')" bindtap='yuyin'></view>
-    <view class="yuyin" style="background-image:url('{{MainSrc}}{{yuyinSrc}}')" bindtap='playRecord'></view>
+    <!-- <view class="yuyin" style="background-image:url('{{MainSrc}}{{yuyinSrc}}')" bindtap='playRecord'></view> -->
     
     <view class="inputView" style="">
           <input class="input"  placeholder="为ta留言并分享"  placeholder-class="placeholder"     bindinput="listenerMessageInput"/>
     </view>
      
-      <view class="tuoyuan" style="background-image:url('{{MainSrc}}{{tuoyuanSrc}}')" bindtap="share">分享</view>
+      <view class="tuoyuan"><button class="button" style="background-image:url('{{MainSrc}}{{tuoyuanSrc}}')" open-type="share"><text>分享</text></button></view>
   </view>
 
 </view>

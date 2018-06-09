@@ -132,3 +132,22 @@ left: 40rpx;
     border-radius: 40px;
   
 }
+
+.button{
+  width: 85rpx;
+  height: 85rpx;
+  border-radius: 42rpx;
+  border: none;
+  background-size: 100% 100%;
+  align-self: center;
+  display: table;
+}
+
+.button text{
+
+  font-size: 20rpx;
+  color:white;
+  vertical-align:middle;
+  display: table-cell;
+
+}

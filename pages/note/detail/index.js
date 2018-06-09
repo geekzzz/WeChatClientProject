@@ -11,7 +11,7 @@ Page({
     location: "",
     time: "12:01",
     region: ["浙江省", "杭州市", "西湖区"],
-    array: ["爸爸", "妈妈", "儿子", "女儿"],
+    array: ["爸爸", "妈妈", "儿子", "女儿", "爷爷", "奶奶", "兄弟", "姐妹", "丈夫", "妻子", "男友", "女友"],
     index: 0,
     rows: {},//从note界面跳转过来时，从数据库拉取的当前人物数据
     nowId: 0,
@@ -27,9 +27,15 @@ Page({
     this.data.region[0] = initData.province
     this.data.region[1] = initData.city
     this.data.region[2] = initData.district
+    var i;
+    for(i=0;i<this.data.array.length;i++)
+      if(this.data.array[i]==initData.name)
+        break;
+
     this.setData(
       {
-        region: this.data.region
+        region: this.data.region,
+        index:i
       }
     )
     this.data.nowId = initData.objid;
@@ -119,6 +125,10 @@ Page({
     })
   },
   submit: function () {
+    var test = getApp().globalData;
+    test.WeatherNeedRefresh1 = true;
+    test.WeatherNeedRefresh2 = true;
+    console.log(test.WeatherNeedRefresh);
     var that = this;
     console.log("this.data.nowId", this.data.nowId);
     var Note = Bmob.Object.extend("note");
@@ -138,14 +148,14 @@ Page({
     wx.navigateBack({
       delta: 1
     });
-    wx.navigateTo({
-      url: '../collect/collect',
-      success: (result) => {
-        console.log("111");
-      },
-      fail: (result) => {
-        console.log(result);
-      },
-    })
+    // wx.navigateTo({
+    //   url: '../collect/collect',
+    //   success: (result) => {
+    //     console.log("111");
+    //   },
+    //   fail: (result) => {
+    //     console.log(result);
+    //   },
+    // })
   }
 })
