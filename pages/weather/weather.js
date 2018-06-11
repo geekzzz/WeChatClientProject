@@ -8,28 +8,21 @@ Page({
   data: {
     // MainSrc:"/image/qietu/tianqibeijin",
     MainSrc: "https://wximg-1256782551-1256782551.cos.ap-guangzhou.myqcloud.com/qietu/tianqibeijin",
-    // Info: [
-    //   { Location: "广州", Name: [], Temperature: "35°C", Weather: "晴", WeatherId: "100", CardId: 5, OtherInfo: { aqi: "", qlt: "", pm25: "" }, Tips: [], Date: "2018.7.28--Sunday", Week: "", Warning: "20号西瓜台风将登陆广州", hasWarning: true, Cloth: "冷", Rays: "最强", Cold: "极易发", Sports: "不适宜", forecast: [] },
-    //   { Location: "杭州", Name: [], Temperature: "35°C", Weather: "晴转多云", WeatherId: "100", CardId: 5, OtherInfo: { aqi: "", qlt: "", pm25: "" }, Tips: [], Date: "2018.7.28--Sunday", Week: "", Warning: "", hasWarning: false, Cloth: "冷", Rays: "最强", Cold: "极易发", Sports: "不适宜", forecast: [] },
-    //   { Location: "牡丹江", Name: [], Temperature: "35°C", Weather: "晴转多云", WeatherId: "100", CardId: 5, OtherInfo: { aqi: "", qlt: "", pm25: "" }, Tips: [], Date: "2018.7.28--Sunday", Week: "", Warning: "", hasWarning: false, Cloth: "冷", Rays: "最强", Cold: "极易发", Sports: "不适宜", forecast: [] }
-    // ],
+  
     Info: [
-      { Location: "广州市", Name: [], Temperature: "35°C", Weather: "晴", WeatherId: "100", CardId: 5, OtherInfo: { aqi: "", qlt: "", pm25: "" }, Tips: [], Date: "2018.7.28--Sunday", Week: "", Warning: "", hasWarning: true, Cloth: "冷", Rays: "最强", Cold: "极易发", Sports: "不适宜", forecast: [] },
+      { Location: "杭州市", Name: [], Temperature: "35°C", Weather: "阴", WeatherId: "104", CardId:7, OtherInfo: { aqi: "", qlt: "", pm25: "" }, Tips: [], Date: "2018.7.28--Sunday", Week: "", Warning: "", hasWarning: true, Cloth: "冷", Rays: "最强", Cold: "极易发", Sports: "不适宜", forecast: [] },
     ],
     // Info: [{ Location: "广州", Name: "我", Temperature: "35°C", Weather: "晴", OtherInfo: "AQI 15 空气质量 优", Date: "2018.7.28--Sunday", Warning: "20号西瓜台风将登陆广州", hasWarning: true, Cloth: "冷", Rays: "最强", Cold: "极易发", Sports: "不适宜" }],
-    WeatherIcon: ["test1.png", "iconsnow.png", "iconrain.png", ""],
-    WeatherCard: ["snow.png", "rain.png", "cloud.png", "frog.png", "hot.png", "sunny.png", "wind.png"],
-    WeatherCardReverse: ["snowReverse.png", "rainReverse.png", "cloudReverse.png", "frogReverse.png", "hotReverse.png", "sunnyReverse.png", "windReverse.png"],
+    WeatherCard: ["snow.png", "rain.png", "cloud.png", "frog.png", "hot.png", "sunny.png", "wind.png","overcast.png"],
+    WeatherCardReverse: ["snowReverse.png", "rainReverse.png", "cloudReverse.png", "frogReverse.png", "hotReverse.png", "sunnyReverse.png", "windReverse.png", "overcastReverse.png"],
     BottomBg: "bottomBg.png",
     AddButton: "addButton.png",
     animation0: "",
     animation1: "",
     canRefresh: false,
-
-
   },
   navigate: function (event) {
-    console.log(event);
+   // console.log(event);
     //event.currentTarget.id;
     var i = parseInt(event.currentTarget.id);
     var that = this;
@@ -38,18 +31,43 @@ Page({
     })
   },
   Add: function () {
-    console.log("AddNumber");
+   // console.log("AddNumber");
     wx.navigateTo({
       url: '../addMember/addMember',
     })
   },
   GetNote: function()
   {
+    this.data.Info = [
+      { Location: "杭州市", Name: [], Temperature: "35°C", Weather: "晴", WeatherId: "100", CardId: 5, OtherInfo: { aqi: "", qlt: "", pm25: "" }, Tips: [], Date: "2018.7.28--Sunday", Week: "", Warning: "", hasWarning: true, Cloth: "冷", Rays: "最强", Cold: "极易发", Sports: "不适宜", forecast: [] },
+    ];
     var that = this
     //先重置数据
-    this.data.Info = [
-      { Location: "广州市", Name: [], Temperature: "35°C", Weather: "晴", WeatherId: "100", CardId: 5, OtherInfo: { aqi: "", qlt: "", pm25: "" }, Tips: [], Date: "2018.7.28--Sunday", Week: "", Warning: "20号西瓜台风将登陆广州", hasWarning: true, Cloth: "冷", Rays: "最强", Cold: "极易发", Sports: "不适宜", forecast: [] },
-    ],
+    wx.getLocation({
+      success: function(res) {
+      // console.log(res);
+       var test = getApp().globalData;
+        var url = test.heWeather + 'weather?key=' + test.key + '&location=' +res.latitude+","+res.longitude;
+        var that8=that;
+        wx.request({
+          url: url,
+          data: {},
+          method: 'GET',
+          success: function (res){
+           // console.log(res);
+            var basic = res.data.HeWeather6[0].basic;
+            
+            that8.data.Info[0].Location = basic.parent_city+"市";
+            
+            that8.setData({
+              'Info[0].Location': that8.data.Info[0].Location
+            })
+          }
+        })
+      },
+    })
+    
+    
     wx.login({
       success: function (res) {
         var that2 = that
@@ -72,9 +90,9 @@ Page({
                   // 循环处理查询到的数据
                   var that4 = that3
                 //  console.log('查询成功', results);
-                  console.log(that4.data.Info)
+                //  console.log(that4.data.Info)
                   if (results.length > 0) {
-                    console.log('...........', results[0].attributes.city)
+               //     console.log('...........', results[0].attributes.city)
                     var set = new Set();
                     for (var i = 0; i < results.length; i++) {
                     //  console.log(results[i].attributes.city)
@@ -140,22 +158,22 @@ Page({
     // this.setData({
     //   Info:this.data.Info
     // })
-    console.log(this.data.Info);
-    console.log(this.data.Info.length);
+  //  console.log(this.data.Info);
+  //  console.log(this.data.Info.length);
     var that = this;
     for (var i = 0; i < this.data.Info.length; i++) {
 
 
       var url = test.heWeather + 'weather?key=' + test.key + '&location=' + this.data.Info[i].Location.replace("市","");
 
-      console.log(url);
+   //   console.log(url);
 
       wx.request({
         url: url,
         data: {},
         method: 'GET',
         success: function (res) {
-          console.log(res.data);
+    //      console.log(res.data);
 
           var daily_forecast_today = res.data.HeWeather6[0].daily_forecast[0];//今天预报
           var daily_forecast_tomorrow = res.data.HeWeather6[0].daily_forecast[1];//明天天预报
@@ -167,51 +185,95 @@ Page({
           var j;
           for (j = 0; j < that.data.Info.length; j++)
             if (that.data.Info[j].Location.replace("市","") == basic.location)
-              break;
+              {
+              var tmp = that.data.Info[j];
+              tmp.Temperature = now.tmp + "°C";
+              tmp.Weather = now.cond_txt;
+              tmp.WeatherId = now.cond_code;
+              //根据天气确定卡片背景
+              var a = parseInt(tmp.WeatherId);
+              var b;
+              if (a == 100 || a == 103 || (a >= 200 && a <= 204))
+                b = 5;
+              else if (a == 213 || a == 900)
+                b = 4;
+              else if (a >= 205 && a <= 212)
+                b = 6;
+              else if (a >= 500 && a <= 515)
+                b = 3;
+              else if ((a >= 400 && a <= 410) || a == 499 || a == 901)
+                b = 0;
+              else if ((a >= 300 && a <= 318) || a == 399)
+                b = 1;
+              else if (a == 101|| a == 102)
+                b = 2;
+              else if(a==104)
+                b=7;
+              else
+                b = 6;
+              tmp.CardId = b;
 
-          var tmp = that.data.Info[j];
-          tmp.Temperature = now.tmp + "°C";
-          tmp.Weather = now.cond_txt;
-          tmp.WeatherId = now.cond_code;
-          //根据天气确定卡片背景
-          var a = parseInt(tmp.WeatherId);
-          var b;
-          if (a == 100 || a == 103 || (a >= 200 && a <= 204))
-            b = 5;
-          else if (a == 213 || a == 900)
-            b = 4;
-          else if (a >= 205 && a <= 212)
-            b = 6;
-          else if (a >= 500 && a <= 515)
-            b = 3;
-          else if ((a >= 400 && a <= 410) || a == 499 || a == 901)
-            b = 0;
-          else if ((a >= 300 && a <= 318) || a == 399)
-            b = 1;
-          else if (a == 101 || a == 104 || a == 102)
-            b = 2;
-          else
-            b = 6;
-          tmp.CardId = b;
+              tmp.Cloth = lifestyle[1].brf;
+              tmp.Cold = lifestyle[2].brf;
+              tmp.Date = daily_forecast_today.date;
+              var w = new Date(tmp.Date).getDay();
+              var a = ["Sunday", "Monday", "Tuesday", "Wednesday", "Thursday", "Friday", "Saturday"];
+              tmp.Week = a[w];
+              tmp.Rays = lifestyle[5].brf;
+              tmp.Sports = lifestyle[3].brf;
+              tmp.forecast = res.data.HeWeather6[0].daily_forecast;
+              tmp.Tips = lifestyle;
+              var t = "Info[" + j + "]";
+              that.setData({
+                [t]: tmp,
+              })
 
-          tmp.Cloth = lifestyle[1].brf;
-          tmp.Cold = lifestyle[2].brf;
-          tmp.Date = daily_forecast_today.date;
-          var w = new Date(tmp.Date).getDay();
-          var a = ["Sunday", "Monday", "Tuesday", "Wednesday", "Thursday", "Friday", "Saturday"];
-          tmp.Week = a[w];
-          tmp.Rays = lifestyle[5].brf;
-          tmp.Sports = lifestyle[3].brf;
-          tmp.forecast = res.data.HeWeather6[0].daily_forecast;
-          tmp.Tips=lifestyle;
-          var t = "Info[" + j + "]";
-          that.setData({
-            [t]: tmp,
-          })
-          console.log("tmp");
-          console.log(tmp);
-          // console.log(that.data.Info[j]);
-          //flag=true;
+              }
+
+
+
+          // var tmp = that.data.Info[j];
+          // tmp.Temperature = now.tmp + "°C";
+          // tmp.Weather = now.cond_txt;
+          // tmp.WeatherId = now.cond_code;
+          // //根据天气确定卡片背景
+          // var a = parseInt(tmp.WeatherId);
+          // var b;
+          // if (a == 100 || a == 103 || (a >= 200 && a <= 204))
+          //   b = 5;
+          // else if (a == 213 || a == 900)
+          //   b = 4;
+          // else if (a >= 205 && a <= 212)
+          //   b = 6;
+          // else if (a >= 500 && a <= 515)
+          //   b = 3;
+          // else if ((a >= 400 && a <= 410) || a == 499 || a == 901)
+          //   b = 0;
+          // else if ((a >= 300 && a <= 318) || a == 399)
+          //   b = 1;
+          // else if (a == 101 || a == 104 || a == 102)
+          //   b = 2;
+          // else
+          //   b = 6;
+          // tmp.CardId = b;
+
+          // tmp.Cloth = lifestyle[1].brf;
+          // tmp.Cold = lifestyle[2].brf;
+          // tmp.Date = daily_forecast_today.date;
+          // var w = new Date(tmp.Date).getDay();
+          // var a = ["Sunday", "Monday", "Tuesday", "Wednesday", "Thursday", "Friday", "Saturday"];
+          // tmp.Week = a[w];
+          // tmp.Rays = lifestyle[5].brf;
+          // tmp.Sports = lifestyle[3].brf;
+          // tmp.forecast = res.data.HeWeather6[0].daily_forecast;
+          // tmp.Tips=lifestyle;
+          // var t = "Info[" + j + "]";
+          // that.setData({
+          //   [t]: tmp,
+          // })
+          // console.log("tmp");
+          // console.log(tmp);
+  
         }
       })
       var urlair = 'https://free-api.heweather.com/s6/air/now?key=' + test.key + '&location=' + this.data.Info[i].Location.replace("市", "");
@@ -221,7 +283,7 @@ Page({
         data: {},
         method: 'GET',
         success: function (res) {
-          console.log(res.data);
+     //     console.log(res.data);
           var basic = res.data.HeWeather6[0].basic;
           var air_now_city = res.data.HeWeather6[0].air_now_city;
           var aqi = air_now_city.aqi;
@@ -230,15 +292,17 @@ Page({
           var j;
           for (j = 0; j < that.data.Info.length; j++)
             if (that.data.Info[j].Location.replace("市","") == basic.location)
-              break;
-          var tmp = that.data.Info[j];
-          tmp.OtherInfo.aqi = aqi;
-          tmp.OtherInfo.qlt = quality;
-          tmp.OtherInfo.pm25 = pm25;
-          var t = "Info[" + j + "]";
-          that.setData({
-            [t]: tmp,
-          })
+              {
+              var tmp = that.data.Info[j];
+              tmp.OtherInfo.aqi = aqi;
+              tmp.OtherInfo.qlt = quality;
+              tmp.OtherInfo.pm25 = pm25;
+              var t = "Info[" + j + "]";
+              that.setData({
+                [t]: tmp,
+              })
+              }
+          
 
 
         }
@@ -253,8 +317,8 @@ Page({
   onLoad: function (options) {
     console.log("onLoad");
     this.GetNote();
-   // this.PullData();
-    //{ Location: "广州", Name: [], Temperature: "35°C", Weather: "晴", WeatherId: "100", CardId: 5, OtherInfo: { aqi: "", qlt: "", pm25: "" }, Tips: [], Date: "2018.7.28--Sunday", Week: "", Warning: "20号西瓜台风将登陆广州", hasWarning: true, Cloth: "冷", Rays: "最强", Cold: "极易发", Sports: "不适宜", forecast: [] },
+  //  console.log(this.data.Info);
+  
   },
 
   /**
@@ -293,8 +357,7 @@ Page({
   onShow: function () {
     var test = getApp().globalData;
     if (test.WeatherNeedRefresh1 == true) {
-this.GetNote();
-//this.PullData();
+      this.GetNote();
     }
     test.WeatherNeedRefresh1=false;
     console.log("onshow");

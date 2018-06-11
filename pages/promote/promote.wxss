@@ -1,0 +1,84 @@
+/* pages/addMember/addMember.wxss */
+.addMemberPage{
+  display: flex;
+  height: 100%;
+  flex-direction: column;
+  font-size: 33.3rpx;
+  background-color:white;
+}
+.pic{
+  width: 483rpx;
+  height: 190rpx;
+  background-size: 100% 100%;
+  margin-top: 51rpx;
+  align-self: center;
+}
+.question{
+   width:545rpx;
+  height: 60rpx;
+  color: #8497b6;
+  align-self: center;
+  margin-top: 100rpx;
+}
+.answer{
+  position: relative;
+  width:545rpx;
+  height: 85rpx;
+  background-size:100% 100%;
+  align-self: center;
+}
+
+.picker{
+color:#9b9b9b;
+position: absolute;
+bottom: 12rpx;
+width: 100%;
+}
+
+
+.shencheng{
+width:226rpx;
+height:61rpx;
+align-self: center;
+margin-top:80rpx;
+background-size:100% 100%;
+}
+
+.bottom{
+width:500rpx;
+height:77rpx;
+align-self: center;
+margin-top:80rpx;
+background-size:100% 100%;
+}
+
+.canvasPage{
+  width:100%;
+  height: 100%;
+  position: fixed;
+  background-color: #f2f2f2;
+}
+
+.myCanvas{
+  width:750rpx;
+  height: 750rpx;
+  position: fixed;
+  top: 160rpx;
+left: 0%;
+}
+
+.saveButton{
+  color:grey;
+  width: 40%;
+  position:fixed;
+  bottom:40rpx;
+  left: 30%;
+}
+
+.newCanvas{
+  width:1500rpx;
+  height: 1500rpx;
+  position: fixed;
+  top: 100%;
+left: 0%;
+}

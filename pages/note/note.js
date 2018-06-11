@@ -46,7 +46,7 @@ Page({
   },
   onShow: function () {
          getNote(this);
-    tmp.WeatherNeedRefresh2 = false;
+   // tmp.WeatherNeedRefresh2 = false;
     wx.getSystemInfo({
       success: (res) => {
         that.setData({
@@ -107,15 +107,15 @@ function getNote(t, k) {
     success: function (results) {
       // 循环处理查询到的数据
       var that2 = that
-      console.log(results);
+    //  console.log(results);
       if (results.length > 0) {
-        console.log('...........', results[0].attributes.city)
+     //   console.log('...........', results[0].attributes.city)
         var set = new Set();
         for (var i = 0; i < results.length; i++) {
-          console.log(results[i].attributes.city)
+      //    console.log(results[i].attributes.city)
           set.add(results[i].attributes.city)
         }
-        console.log(set)
+      //  console.log(set)
         for (var x of set) {
           //console.log(x)
           var LName = [];
@@ -134,7 +134,7 @@ function getNote(t, k) {
               LName.push(member)
             }
           }
-          console.log(LName)
+        //  console.log(LName)
           var obj =
             {
               location: x,
@@ -142,7 +142,7 @@ function getNote(t, k) {
             };
           that2.data.family.push(obj)
         }
-        console.log(that2.data.family)
+     //   console.log(that2.data.family)
         that2.setData({
           family: that2.data.family
         })

@@ -1,0 +1,36 @@
+<!--pages/addMember/addMember.wxml-->
+
+
+<view class="addMemberPage">
+<view class="pic" style="background-image:url('{{MainSrc}}/顶图.png')"></view>
+
+
+<view class="question">你的城市</view>
+<view class="answer" style="background-image:url('{{MainSrc}}/line.png')" >
+  <picker mode="region" value="{{region}}" bindchange="bindRegionChange">
+    <view class="picker">
+      {{region[0]}} {{region[1]}} {{region[2]}}
+    </view>
+  </picker>
+</view>
+
+<view class="question">你的心情</view>
+<view class="answer" style="background-image:url('{{MainSrc}}/line.png')" >
+ <picker mode="selector"  range="{{Mood}}" value="{{index}}" bindchange="bindNameChange">
+<view class="picker">
+      {{Mood[index]}}
+    </view>
+    </picker>
+</view>
+
+<view class="shencheng" bindtap='createPic' style="background-image:url('{{MainSrc}}/按钮.png')"></view>
+<view class="bottom"   style="background-image:url('{{MainSrc}}/底图改.png')"></view>
+
+
+<view class="canvasPage" hidden='{{IsHidden}}'>
+<canvas canvas-id="myCanvas" class="myCanvas"/>
+<canvas canvas-id="newCanvas" class="newCanvas"/>
+<button class="saveButton" bindtap="Save">保存到相册</button>
+</view>
+
+</view>

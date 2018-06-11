@@ -27,14 +27,19 @@
 
 
   <view class="message">
-    <view class="yuyin" style="background-image:url('{{MainSrc}}{{yuyinSrc}}')" bindtap='yuyin'></view>
+    <view wx:if="{{NotRecording}}" class="yuyin" style="background-image:url('{{MainSrc}}{{yuyinSrc}}')" bindtap='yuyin'
+     ></view>
+     <view wx:else class="yuyin" style="background-image:url('{{MainSrc}}{{textSrc}}')" bindtap='yuyin'
+     ></view>
     <!-- <view class="yuyin" style="background-image:url('{{MainSrc}}{{yuyinSrc}}')" bindtap='playRecord'></view> -->
     
-    <view class="inputView" style="">
+    <view wx:if="{{NotRecording}}" class="inputView" style="background-image:url('{{MainSrc}}{{shuruSrc1}}')">
           <input class="input"  placeholder="为ta留言并分享"  placeholder-class="placeholder"     bindinput="listenerMessageInput"/>
     </view>
+
+    <view wx:else class="inputView" style="" bindlongtap='startRecordMp3' bindtouchend='stopRecord' style="background-image:url('{{MainSrc}}{{shuruSrc2}}')"></view>
      
-      <view class="tuoyuan"><button class="button" style="background-image:url('{{MainSrc}}{{tuoyuanSrc}}')" open-type="share"><text>分享</text></button></view>
+      <view class="tuoyuan"><button class="button" style="background-image:url('{{MainSrc}}{{fenxiangSrc[isReady]}}')" open-type="share"></button></view>
   </view>
 
 </view>

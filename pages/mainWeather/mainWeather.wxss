@@ -17,6 +17,14 @@ color: #ff7b2e;
   /* background-color:black; */
   
 }
+.snowOrRain{
+  position: absolute;
+  background-size:auto;
+  top: 0rpx;
+  left: 375rpx;
+  width: 80rpx;
+  height: 80rpx;
+}
 
 .taiyang1{
   position: absolute;
@@ -123,31 +131,21 @@ left: 40rpx;
 
 .inputView{
   position: relative;
-    border:  1rpx solid grey;
+ /* border:  1rpx solid grey; */
     display: flex;
     align-items: center;
-
+background-size: 100% 100%;
     width:480rpx;
     height: 85rpx;
-    border-radius: 40px;
+
   
 }
 
 .button{
   width: 85rpx;
   height: 85rpx;
-  border-radius: 42rpx;
-  border: none;
+
   background-size: 100% 100%;
-  align-self: center;
-  display: table;
-}
-
-.button text{
-
-  font-size: 20rpx;
-  color:white;
-  vertical-align:middle;
-  display: table-cell;
 
 }
+

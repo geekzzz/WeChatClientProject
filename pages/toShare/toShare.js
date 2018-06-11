@@ -19,8 +19,8 @@ Page({
     animation3: '',
     animation4: '',
     animationSrc: ["太阳1.png", "太阳2.png", "太阳3.png"],
-    Card: ["snow", "rain", "cloud", "frog", "hot", "sun", "wind"],
-    Color: ["#a1b3c0", "#7ac7db", "#7baac7", "#b7b7b7", "#ff7b2e", "#ffba2e", "7991bd"],
+    Card: ["snow", "rain", "cloud", "frog", "hot", "sun", "wind","overcast"],
+    Color: ["#a1b3c0", "#7ac7db", "#7baac7", "#b7b7b7", "#ff7b2e", "#ffba2e", "#7991bd","#427099"],
     tips: [],
     location: "广州",
     weather: "晴",
@@ -216,26 +216,26 @@ Page({
    * 用户点击右上角分享
    */
   onShareAppMessage: function () {
-    console.log(this.data);
+   // console.log(this.data);
     var t=JSON.stringify(this.data);
-var tmp={
-    location: this.data.location,
-      temperature: this.data.temperature,
-        weather: this.data.weather,
-          index: this.data.index,
-            forecast: this.data.forecast,
-              weatherId: this.data.weatherId,
-                cardId: this.data.cardId,
-                  tips: this.data.tips,
-                    tipsId:this.data.tipsId,
-                      Message:this.data.Message,
-                        luyinSrc:this.data.luyinSrc,
-                          name:this.data.name
-}
-return{
-  title:"与你同晴",
-  
-  path:"pages/toShare/toShare?Data="+JSON.stringify(tmp)
+      var tmp={
+                        location: this.data.location,
+                        temperature: this.data.temperature,
+                        weather: this.data.weather,
+                  index: this.data.index,
+                    forecast: this.data.forecast,
+                      weatherId: this.data.weatherId,
+                        cardId: this.data.cardId,
+                          tips: this.data.tips,
+                            tipsId:this.data.tipsId,
+                              Message:this.data.Message,
+                                luyinSrc:this.data.luyinSrc,
+                                  name:this.data.name
+              }
+        return{
+              title:"与你同晴",
+              
+              path:"pages/toShare/toShare?Data="+JSON.stringify(tmp)
 }
   },
   listenerMessageInput: function (e) {

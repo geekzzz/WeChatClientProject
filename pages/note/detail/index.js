@@ -127,8 +127,6 @@ Page({
   submit: function () {
     var test = getApp().globalData;
     test.WeatherNeedRefresh1 = true;
-    test.WeatherNeedRefresh2 = true;
-    console.log(test.WeatherNeedRefresh);
     var that = this;
     console.log("this.data.nowId", this.data.nowId);
     var Note = Bmob.Object.extend("note");
