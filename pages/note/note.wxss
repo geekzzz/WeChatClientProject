@@ -64,6 +64,15 @@ font-size: 37.5rpx;
   align-self: center
 }
 
+.pencildel{
+  position: absolute;
+  width: 70rpx;
+  height: 70rpx;
+  background-size: 100% 100%;
+  right: 100rpx;
+  align-self: center
+}
+
 .AddButton{
   width: 71rpx;
   height: 71rpx;

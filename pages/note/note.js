@@ -61,11 +61,32 @@ Page({
 */
   ModifyNote: function (event) {
     console.log(event)
-    //console.log('modify')
+    console.log('modify')
     
     wx.navigateTo({
       url: './detail/index?Data=' + JSON.stringify(event.target.dataset),
     })
+  },
+
+  DeleteNote: function (event) {
+    console.log(event.target.dataset.objid)
+    console.log('delete')
+    var Note = Bmob.Object.extend("note");
+    var query = new Bmob.Query(Note);
+    var objid = event.target.dataset.objid
+    //query.equalTo("objectId",objid);
+    query.get(objid, {
+      success: function (result) {
+        console.log(result, result.id);
+        result.destroy()
+      },
+      error: function (result, error) {
+        
+      }
+    });
+    // wx.navigateTo({
+    //   url: './detail/index?Data=' + JSON.stringify(event.target.dataset),
+    // })
   },
 
   Add:function(){

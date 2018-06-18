@@ -55,6 +55,7 @@
            <view class="pencil" bindtap='ModifyNote'  data-objid="{{it.objid}}" data-name="{{it.relation}}" data-province="{{it.province}}" data-city="{{it.city}}" data-district="{{it.district}}" style="background-image:url('{{MainSrc}}touxiang/pencil.png')">
               <!-- <text space="nbsp" catchtap="ModifyNote" data-id="{{it.id}}" data-province="{{it.province}}" data-city="{{it.city}}" data-district="{{it.district}}">    .     </text> -->
            </view>
+           <view class="pencildel" bindtap='DeleteNote' data-objid="{{it.objid}}"  style="background-image:url('{{MainSrc}}touxiang/pencil.png')"></view>
         </view>
       </view>
   </view>
